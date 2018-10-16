@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "name": "webpack-angular",
+  "main": "./app/index.jsx",
+  "server": {
+    "host": "http://127.0.0.1:8000"
+  },
+  "quiet": true
+}

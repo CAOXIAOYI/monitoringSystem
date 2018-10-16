@@ -1,0 +1,54 @@
+.welcome-step {
+  @step-width: 280px;
+  @button-r: 60px;
+  .ant-spin {
+    padding: 30px 90px;
+  }
+  .step-top {
+    width: @step-width;
+    height: 80px;
+    .cycle-button {
+      float: left;
+      width: @button-r;
+      height: @button-r;
+    }
+    .step-title-desc {
+      margin-left: @button-r + 6px;
+      .step-title {
+        padding-top: 4px;
+        font-size: 16px;
+        color: #333;
+      }
+      .step-desc {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #BBB;
+      }
+    }
+  }
+  .step-bottom {
+    width: @step-width;
+    height: 200px;
+    border: 1px solid #E9E9E9;
+    border-radius: 5px;
+    .step-bottom-content {
+      overflow-y: auto;
+      padding: 20px 20px 0px 20px;
+      line-height: 2em;
+      height: 60%;
+    }
+    .step-bottom-button {
+      height: 50%;
+      button {
+        display: block;
+        margin: 20px auto;
+      }
+    }
+  }
+  float: left;
+  margin-top: 30px;
+  min-width: @step-width;
+  min-height: 280px;
+  width:33%;
+  height: 280px
+}

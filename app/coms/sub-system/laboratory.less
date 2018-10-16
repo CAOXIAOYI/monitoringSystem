@@ -1,0 +1,71 @@
+.laboratory-page{
+  width:100%;
+  position: relative;
+  height:100%;
+  z-index:10;
+  .dynamo-legend{
+    position: relative;
+    padding-left: 5%;
+    top: 5%;
+    span{
+      margin:0 5px;
+    }
+  }
+  .unit-legend{
+    position: relative;
+    text-align: right;
+    padding-right: 5%;
+    top: 5%;
+    .unit{
+      color:#42d321;
+      margin:0 5px;
+    }
+  }
+  .dynamo-middle{
+     height:calc(~"70%");
+     width:100%;
+    .dynamo-middle-left{
+      width:200px;
+      height:200px;
+      margin: 0 auto;
+      position: relative;
+      margin-top: 15%;
+      margin-left: 45%;
+      .dynamo-lable-left{
+        position: absolute;
+        top: 5%;
+        left: 10px;
+        z-index:1000;
+        div{
+          padding:3px 4px;
+          color:#42d321;
+        }
+      }
+      .div-bg{
+        position: absolute;
+        width: 161px;
+        height:119px;
+        left:-88px;
+        background:url('../../assets/img/ups.png') center center no-repeat;
+        .div-text{
+          font-size:12px;
+          text-align: center;
+          margin-top: -10%;
+          margin-left: 60%;
+        }
+      }
+      
+      .dynamo-line{
+        border-left:1px solid #ffffff;
+        height:50%;
+        width: 100%;
+        position: relative;
+        .left-circle{
+          position: absolute;
+          left: -8px;
+          top: 10%;
+        }
+      }
+    }
+  }
+}

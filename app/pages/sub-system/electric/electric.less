@@ -1,0 +1,189 @@
+.page-sub-system {
+  width: 100%;
+  height: calc(~"100%");
+  .electric-equipment-container{
+    color:#fff;
+    width: 100%;
+    height: calc(~"100%");
+    margin-bottom:10px;
+    .electric-left{
+      animation: electric-left 0.5s forwards;
+      float:left;
+      width: calc(~"60%");
+      height: calc(~"100%");
+      overflow: auto;
+      position: relative;
+      &.electric-left-stretch {
+        animation: electric-left-stretch 0.5s forwards;
+        width: 100%;
+      }
+      /**开关及状态start**/
+      .switch{
+        display: block;
+        width: 13px;
+        height: 30px;
+        z-index: 1111;
+        position: absolute;
+      }
+      .switch-legend{
+        display: inline-block;
+        width:5px;
+        height: 10px;
+      }
+      .switch-on{
+        /**background: #42D321;*/
+        background: linear-gradient(to bottom, #02BE12 0%,#2DF401 50%,#1DB700 100%);
+      }
+      .switch-offline{
+        /**background: #42D321;*/
+        background: linear-gradient(to bottom, #9C9C9C 0%,#FFFFFF 50%,#9C9C9C 100%);
+      }
+      .switch-off{
+        /**background: #FD0000;*/
+        background: linear-gradient(to bottom, #BD0101 0%,#FF0000 50%,#BB0404 100%);
+      }
+      /**开关及状态end**/
+      /**监测点及状态start**/
+      .circle{
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        z-index: 1111;
+      }
+      .circle-legend{
+        .circle();
+        width: 10px;
+        height: 10px;
+      }
+      .circle-on{
+        /*background: #42D321;*/
+        background:radial-gradient(#FFFFFF,#42D321)
+      }
+      .circle-off{
+        /*background: #FD0000;*/
+        background:radial-gradient(#FFFFFF,#FD0000)
+      }
+      /**监测点及状态end**/
+    }
+    
+    .electric-right{
+      animation: electric-right 0.5s forwards;
+      width:40%;
+      float:left;
+      height: calc(~"100%");
+      position: relative;
+      background:#354053;
+      .stretchIcon {
+        position: absolute;
+        z-index: 1111;
+        left: -10px;
+        top: 40%;
+        color: #fff;
+        cursor: pointer;
+        width: 11px;
+        height: 42px;
+        span {
+          display: block;
+          padding-top: 13px;
+          .iconfont {
+            font-size: 10px;
+          }
+        }
+        background-image:url(../../../assets/img/right_icon_bg.png);
+      }
+      
+      &.electric-right-stretch {
+        animation: electric-right-stretch 0.5s forwards;
+        width: 0px;
+      }
+      .electric-container{
+        overflow: auto;
+        background: #2B2D3B;
+        height:100%;
+        .electric-head{
+          margin-left: 10px;
+          margin-top: 10px;
+          border-radius: 10px;
+          padding:5px 0;
+          background: linear-gradient(to bottom, #AEB6DB 0%,#73788D 50%,#A2AACE 100%);
+          border-left:2px solid #FFF;/* linear-gradient(to bottom, #FFF 0%,#CBCBCB 50%,#FFF 100%);*/
+          white-space: nowrap;
+          display: inline-block;
+          min-width: calc(~"100% - 20px");
+          span{
+           width:100px;
+           padding:5px;
+           display: inline-block;
+          }
+        }
+        .electric-body{
+          margin-left: 10px;
+          margin-top: 10px;
+          margin-bottom: 5px;
+          display: inline-block;
+          min-width: calc(~"100% - 20px");
+
+          white-space: nowrap;
+          border-radius: 10px;
+          padding:5px 0;
+          background: linear-gradient(to bottom, #6C728A 0%,#3A3E52 100%);
+          span{
+           width:100px;
+           display: inline-block;
+           padding:5px;
+          }
+        }
+      }
+    }
+  }
+  .electric-footer{
+    color:#fff;
+    width: 100%;
+    height:113px;
+   
+    .device-param{
+      margin-bottom:10px;
+      text-align: center;
+      padding-right:5px;
+      .ant-col-5{
+        border-left: 2px solid #FF0000;
+        border-radius: 10px;
+        padding:10px 10px;
+        background:#354053;
+      }
+    }
+  }
+  @keyframes electric-left {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 60%;
+    }
+  }
+  @keyframes electric-right{
+    0% {
+      width: 0px;
+    }
+    100% {
+      width: 40%;
+    }
+  }
+  @keyframes electric-left-stretch {
+    0% {
+      width: 60%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  @keyframes electric-right-stretch{
+    0% {
+      width: 40%;
+    }
+    100% {
+      width: 0px;
+    }
+  }
+}

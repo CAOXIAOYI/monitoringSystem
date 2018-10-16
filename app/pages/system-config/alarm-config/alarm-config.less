@@ -1,0 +1,128 @@
+.alarm-config-page {
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: auto;
+  height: 100%;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 500px;
+  .alarm-config-container {
+    width: 80%;
+    margin: auto;
+    .sub-title {
+      width: 100%;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 300;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 3px;
+    }
+    .add-user-form {
+      margin-bottom: 25px;
+      .ant-form-item-label {
+        label {
+          display: inline-block;
+          width: 100%;
+          text-align: left;
+        }
+      }
+      .passwordDiv{
+        overflow: hidden;
+        .ant-form-item{
+          width: 50%;
+          float:left;
+        }
+      }
+    }
+    .ant-form{
+      border: 1px solid #fff;
+      border-radius: 10px;
+      padding: 10px 20px;
+    }
+    .btn-row {
+        height:100%;
+        margin-top:20px;
+        overflow: hidden;
+        .add-chageBtn{
+          .index-chageBtn();
+          float: left;
+          width: 10%;
+          border-radius: 20px;
+          text-align: center;
+          color: #fff;
+          cursor: pointer;
+          &:hover{
+            background: #43c5e8;
+          }
+        }
+        .index-chageBtn{
+          float: right;
+          width: 35%;
+          height: 100%;
+          border: 1px solid #fff;
+          border-radius: 10px;
+          div{
+            color: #fff;
+            float: left;
+            border-radius: 15px;
+            cursor: pointer;
+            height: 100%;
+            width: 50%;
+            font-size: 16px;
+            text-align: center;
+            span{
+              margin: 20px;
+            }
+          }
+          .selected{
+            background: #43c5e8;
+          }
+        }
+    }
+    .ant-table-wrapper{
+      border: 1px solid #fff;
+      border-radius:10px;
+      padding: 10px 20px;
+    }
+
+    
+    .ant-collapse {
+      border: 0;
+    }
+    .ant-input{
+     height: 20px;
+     color:#fff;
+     background: transparent;
+     border-radius: 30px;
+     border: 1px solid #fff;
+    }
+    label{
+      color:#fff;
+    }
+    
+    .ant-table{
+      tr,td,th,a{
+       color:#fff;
+       background: transparent;
+       border: 0;
+      }
+
+      
+      .ant-table-header,.ant-table-body{
+        background: transparent;
+        color:#fff;
+      }
+      .ant-table-body{
+       tr:hover{
+         background: rgba(187,213,222, 0.8);
+
+       }
+       a:hover{
+        color:#03B2F5; 
+       }
+      }
+    }  
+  }
+}

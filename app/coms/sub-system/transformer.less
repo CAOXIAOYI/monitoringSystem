@@ -1,0 +1,130 @@
+.transformer-page{
+  width:100%;
+  position: relative;
+  height:100%;
+  z-index:10;
+  .dynamo-legend{
+    position: relative;
+    padding-left: 5%;
+    top: 5%;
+    span{
+      margin:0 5px;
+    }
+  }
+  .unit-legend{
+    position: relative;
+    text-align: right;
+    padding-right: 5%;
+    top: 5%;
+    .unit{
+      color:#42d321;
+      margin:0 5px;
+    }
+  }
+  .dynamo-middle{
+     height:calc(~"100%");
+     width:100%;
+    i{
+      position: relative;
+      left: 35px;
+      top: 30px;
+     }
+    .dynamo-middle-left{
+      width:560px;
+      height:469px;
+      margin: 0 auto;
+      position: relative;
+      margin-top: 15%;
+      .dynamo-lable-left{
+        position: absolute;
+        top: 65%;
+        left:calc(~"15% + 10px");
+        z-index:1000;
+        div{
+          padding:2px 5px;
+          color:#42d321;
+        }
+      }
+      .left-text{
+        position: absolute;
+        top: 50%;
+        display: inline;
+        left: 150px;
+      }
+      .left-img{
+        position: absolute;
+        top: 30%;
+        display: inline;
+        left:calc(~"15% - 65px");
+      }
+      .right-text{
+        position: absolute;
+        top: 50%;
+        display: inline;
+        right: 140px;
+      }
+      .right-img{
+        position: absolute;
+        top: 30%;
+        display: inline;
+        right: calc(~"15% - 65px");
+      }
+      .dynamo-lable-right{
+        position: absolute;
+        top: 65%;
+        right:calc(~"15% - 80px");
+        margin-left:10px;
+        z-index:1000;
+        div{
+          padding:2px 5px;
+          color:#42d321;
+        }
+      }
+      .dynamo-line{
+        height:90%;
+        width: 90%;
+        position: relative;
+        border-top: 4px solid #fff;
+        margin-left: 5%;
+        .dynamo-bg{
+           border-left: 1px solid #fff;
+           border-right: 1px solid #fff;
+           width: 70%;
+           height:100%;
+           margin-left: 15%;
+          .left-switch-one{
+            position: absolute;
+            left:calc(~"15% - 6px");
+            top: 10%;
+          }
+          .right-switch-one{
+            position: absolute;
+            right: calc(~"15% - 6px");
+            top: 10%;
+          } 
+          .left-switch-two{
+            position: absolute;
+            left:calc(~"15% - 6px");
+            top: 80%;
+          }
+          .right-switch-two{
+            position: absolute;
+            right: calc(~"15% - 6px");
+            top: 80%;
+          }  
+          .left-circle{
+            position: absolute;
+            left:calc(~"15% - 6px");
+            top: 65%;
+          }
+          .right-circle{
+            position: absolute;
+            right: calc(~"15% - 6px");
+            top: 65%;
+          }
+        }
+        
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.get-start-modal {
+  @ant-menu-width: 200px;
+  @get-start-content-height: 300px;
+  .ant-menu {
+    float: left;
+    width: @ant-menu-width;
+    li {
+      line-height: 1em;
+      height: @get-start-content-height / 5;
+      text-align: center;
+      p {
+        padding-top: 10px;
+      }
+      .steps {
+        color: #777;
+      }
+    }
+    .ant-menu-item-selected > .steps {
+      color: #2db7f5;
+    }
+  }
+  .get-start-content {
+    margin-left: @ant-menu-width;
+    height: @get-start-content-height;
+    padding: 0px 0px 0px 20px;
+    h3 {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    h4 {
+      font-size: 12px;
+    }
+    p {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+    ul {
+      padding-left: 14px;
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+}

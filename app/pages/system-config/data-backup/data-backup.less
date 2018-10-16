@@ -1,0 +1,106 @@
+.data-backup-page {
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: auto;
+  height: 100%;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 500px;
+  .data-backup-container {
+    width:calc(~"100% - 20px");
+    margin: auto;
+    .sub-title {
+      width: 100%;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 300;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 3px;
+    }
+    .add-data-backup-form {
+      margin-bottom: 25px;
+      .ant-form-item-label {
+        label {
+          display: inline-block;
+          width: 100%;
+          text-align: left;
+        }
+      }
+      .passwordDiv{
+        overflow: hidden;
+        .ant-form-item{
+          width: 50%;
+          float:left;
+        }
+      }
+    }
+    .ant-form{
+      border-radius: 10px;
+      padding: 10px 20px;
+    }
+    .btn-row {
+        height:100%;
+        margin-top:20px;
+        overflow: hidden;
+        .add-chageBtn{
+          .index-chageBtn();
+          float: left;
+          width: 10%;
+          border-radius: 20px;
+          text-align: center;
+          color: #fff;
+          cursor: pointer;
+          &:hover{
+            background: #43c5e8;
+          }
+        }
+        .index-chageBtn{
+          float: right;
+          width: 240px;
+          height: 100%;
+          border: 1px solid #fff;
+          border-radius: 10px;
+          div{
+            color: #fff;
+            float: left;
+            border-radius: 15px;
+            cursor: pointer;
+            height: 100%;
+            width: 50%;
+            font-size: 16px;
+            text-align: center;
+            span{
+              margin: 20px;
+            }
+          }
+          .selected{
+            background: linear-gradient(to bottom, #fff 0%,#9C9C9C 50%,#fff 100%);
+            color:#000;
+          }
+        }
+    }
+    .ant-table-wrapper{
+      border: 1px solid #fff;
+      border-radius:10px;
+      padding: 10px 20px;
+    }
+
+    
+    .ant-collapse {
+      border: 0;
+    }
+    .ant-input{
+     height: 20px;
+     color:#fff;
+     background: transparent;
+     border-radius: 30px;
+     border: 1px solid #fff;
+    }
+    label{
+      color:#fff;
+    }
+     
+  }
+}

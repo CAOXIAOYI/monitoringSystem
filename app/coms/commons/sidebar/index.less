@@ -1,0 +1,106 @@
+@white-color: #fff;
+@sidebar-background-color: #32383e;
+.dtboost-sidebar {
+  h3 {
+    font-size: 16px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+  }
+  background-color: @sidebar-background-color;
+  animation:dtboost-sidebar 0.5s;
+  width: 225px;
+  height: 100%;
+  .ant-menu-inline >.ant-menu-submenu > .ant-menu-sub > .ant-menu-submenu-active >.ant-menu-submenu-title{
+    background-color:#00C1DE !important;
+    color:#fff;
+  }
+
+  .ant-menu-inline >.ant-menu-submenu > .ant-menu-sub{
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  &.dtboost-sidebar-stretch{
+    animation:dtboost-sidebar-stretch 0.5s;
+    width: 50px;
+    h3{
+      padding: 8px 16px;
+    }
+    .iconfont{
+      color:@white-color;
+      padding-right: 15px;
+    }
+  }
+  .ant-menu-inline{
+    background-color: @sidebar-background-color;
+    color:@white-color;
+    border: none;
+    .ant-menu-submenu > .ant-menu-sub {
+      background-color:#24292e;
+    }
+    .ant-menu-submenu > .ant-menu-sub{
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+  }
+  .ant-menu-vertical{
+    background-color: @sidebar-background-color;
+    color:@white-color;
+    border: none;
+    .ant-menu-submenu > .ant-menu-sub {
+      background-color:#24292e;
+      .ant-menu-submenu-title{
+        color:@white-color;
+      }
+    }
+    .ant-menu-submenu >.ant-menu-submenu-title{
+      color:hsla(0, 0%, 0%, 0);
+      padding:0 10px 0 16px;
+    }
+  }
+  .ant-menu-vertical{
+    background-color: @sidebar-background-color;
+    color:@white-color;
+    border: none;
+    .ant-menu-submenu > .ant-menu-sub {
+      background-color:#24292e;
+      .ant-menu-submenu-title{
+        color:@white-color;
+      }
+    }
+    .ant-menu-submenu >.ant-menu-submenu-title{
+      color:hsla(0, 0%, 0%, 0);
+    }
+  }
+  .ant-menu-vertical > .ant-menu-item,
+  .ant-menu-inline > .ant-menu-item,
+  .ant-menu-item-group-list > .ant-menu-item,
+  .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title,
+  .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title,
+  .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title {
+    font-size: 14px; 
+  }
+  .iconfont{
+    opacity: 0.6;
+    padding-right: 10px;
+    &.circle{
+      display: inline-block;
+      font-size: 12px;
+      -webkit-transform: scale(0.5);
+    }
+  }
+}
+@keyframes dtboost-sidebar-stretch
+{
+  0%   {width:225px;}
+  100% {width:50px;}
+}
+@keyframes dtboost-sidebar
+{
+  0%   {width:50px;}
+  100% {width:225px;}
+}

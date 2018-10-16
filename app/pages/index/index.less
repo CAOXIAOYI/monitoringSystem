@@ -1,0 +1,87 @@
+.page-index{
+    width: 100%;
+    height:calc(~"100% - 115px");
+    background: #454859;
+    /**开关及状态start**/
+    .switch{
+      display: block;
+      width: 13px;
+      height: 30px;
+      z-index: 111;
+      position: absolute;
+    }
+    .switch-legend{
+      display: inline-block;
+      width:5px;
+      height: 10px;
+    }
+    .switch-on{
+      /*background: #42D321;*/
+      background: linear-gradient(to bottom, #02BE12 0%, #2DF401 50%, #1DB700 100%);
+    }
+    .switch-off{
+      /*background: #FD0000;*/
+      background: linear-gradient(to bottom, #BD0101 0%, #FF0000 50%, #BB0404 100%);
+    }
+
+    /**开关及状态end**/
+    .sub-index{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .index-title{
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        width: 180px;
+        height: 80px;
+        .dynamo-legend{
+          color:#fff;
+          span{
+            margin:0 10px 0 0 ;
+          }
+        }
+        .unit-legend{
+          color:#fff;
+          .unit{
+            color:#42d321;
+            margin:0 5px;
+          }
+        }
+        .title{
+          font-size:16px;
+          color:#42d321;
+          .unit{
+            color:#fff;
+          }
+          span{
+            margin:2px;
+          }
+        }
+        .sec-title{
+         .title();
+        }
+      }
+    }
+  .index-chageBtn{
+    position: absolute;
+    right: 30px;
+    top: 150px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    div{
+      margin: 1px;
+      color: #fff;
+      float: left;
+      border-radius: 10px;
+      cursor: pointer;
+      span{
+        margin: 20px;
+      }
+    }
+    .selected{
+      background: linear-gradient(to bottom, #fff 0%,#9C9C9C 50%,#fff 100%);
+      color:#000;
+    }
+  }
+}

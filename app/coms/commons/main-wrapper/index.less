@@ -1,0 +1,116 @@
+@white-color: #fff;
+@blue-color: #2db7f5;
+.main-wrapper {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  height:100%       ;
+  float: left;
+  width: 100%;
+}
+.main-wrapper-aside {
+  top: 0px;
+  left: 0px;
+  height:100%;
+  float: left;
+  color: @white-color;
+
+  .dtboost-sidebar {
+      .ant-menu-submenu-active{
+        background-color:transparent !important;
+      }
+      .ant-menu-submenu {
+        &:hover{
+          background-color:transparent !important;
+        }
+        .ant-menu-submenu-title{
+          &:hover{
+            color:#CCC;
+            background-color:transparent !important;
+          }
+        }
+      }
+      .ant-menu-item-selected, .ant-menu-selected{
+        /* 注释内容 background-color: #00C1DE !important;*/
+        background: linear-gradient(to bottom, #FFFFFF 0%,#A7A7A7 50%,#FFFFFF 100%) !important;
+        color:@white-color !important;
+        border:0px;
+        a{
+          color:#000 !important;
+        }
+        &:hover{
+          background-color: #00C1DE !important;
+        }
+      }
+      .ant-menu-sub>li{
+        &:hover {
+          a{
+            color:#CCC;
+          }
+          background-color: transparent;
+        }
+      }
+      .ant-menu-item>a{
+        color:@white-color;
+      }
+       .introduction-wrap{
+        padding-left:15px!important 
+      }
+  }
+  .dtboost-sidebar-stretch {
+    .introduction-wrap>a{
+      color:transparent;  
+    }
+    .introduction-wrap>a:hover{
+      color:transparent!important;  
+    }
+    .ant-menu-vertical {
+      .ant-menu-submenu {
+        ant-menu-submenu-title{
+          &:hover{
+            color:#CCC;
+            background-color: transparent !important;
+          }
+        }
+      }
+      .ant-menu-sub>li {
+        &:hover {
+          background:@blue-color;
+        }
+      }
+    }
+  }
+}
+.main-wrapper-main {
+  animation:main-wrapper-main .5s;
+  float: left;
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  background: #454959;
+  width:calc(~"100% - 225px");
+  border-radius: 5px;
+  &.main-wrapper-main-explore{
+    margin: 0px;
+    padding: 0px;
+    width: calc(~"100% - 220px") !important;
+  }
+
+  &.main-wrapper-main-stretch{
+    animation:main-wrapper-main-stretch .5s forwards;
+  }
+  height:calc(~"100%");
+}
+
+@keyframes main-wrapper-main
+{
+  0%   {width:calc(~"100% - 81px");}
+  100% {width:calc(~"100% - 225px");}
+}
+@keyframes main-wrapper-main-stretch
+{
+  0%   {width:calc(~"100% - 230px");}
+  100% {width:calc(~"100% - 81px");}
+}

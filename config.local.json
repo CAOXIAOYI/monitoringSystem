@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "name": "monitoring-system",
+  "index": "./index.html",
+  "main": "./app/index.jsx",
+  "output": {
+    "app": "app",
+    "vendor": "vendor",
+    "path": ".package",
+    "publicPath": "/",
+    "version": "",
+    "assetPath": "assets/"
+  }, 
+  "devtool": "#cheap-source-map",
+  "server": {
+    "host": "http://dev.smartview.hldyun.test:8083"
+  },
+  "testserver": {
+    "host": "http://local.biz.hld-inc.com:9999"
+  },
+  "jsx": true,
+  "partition": {
+    "$$PRIVATE": true,
+    "$$PUBLIC": true
+  },
+  "vendors": [
+      "jquery",
+      "lodash",
+      "moment",
+      "react",
+      "react-redux",
+      "react-dom",
+      "react-router",
+      "react-router-redux",
+      "redux",
+      "redux-logger",
+      "redux-thunk",
+      "antd",
+      "d3"
+  ],
+  "provide": {
+    "React": "react",
+    "jQuery": "jquery",
+    "$": "jquery",
+    "THREE": "three.js",
+    "d3": "d3"
+  },
+  "expose": {
+    "jQuery": "jquery.js",
+    "$": "jquery.js"
+  },
+  "proxy": [{
+    "host": "http://10.101.92.23",
+    "routes": [
+    "/otm*",
+    "/analyse*",
+    "/console/api*",
+    "/console/system*",
+    "/otm_v2*",
+    "/analyse*",
+    "/ipe*",
+    "/smartmove_v2*",
+    "/rest*",
+    "/uweb*",
+    "/ide*",
+    "/admin*",
+    "/jsonp*",
+    "/header*",
+    "/csrf-assemble.js*"
+    ],
+    "headers": {
+        "cookie": "cna=essdEKwdPFUCASp4Sslf8AEq; l=ApmZtqn227uvXnArhwtS1fOYKY9zNI3Y; isg=AjY2XbDQfSSg4QlB1mgKSJfCh2oH_XqRHSwCAKAfMJm049Z9CefKoZzTjQh1; _csrf=OnDHv069kwzhsSzeNRMr3MjH; bs_n_lang=en; login_aliyunid=\"dtb****@aliyun.com\"; login_aliyunid_ticket=BoNM1ZJeedfK9zxYnbN5hossqIZCr6t7SGxRigm2Cb4fGaCdBZWIzmgdHq6sXXZQg4KFWufyvpeV*0*Cm58slMT1tJw3_I$$mQnzDQQBZB7Bomf6RMtRnHRmwmlE_bTaY82*bzMklGof_BNpwU_TOThC0; login_aliyunid_csrf=_csrf_tk_1474470827199575; login_aliyunid_pk=1696462764375572; hssid=1GV1CMJpGezM1IvhdAz5otw1; hsite=6; aliyun_country=CN; c_token=de3cf9e4ffebc9a441e8cff3fa938f9b; ck2=f0ab959fb3c1163774ae34d7e6f6d786; an=\"dtboost@aliyun.com\"; lg=true; sg=m12; lvc=sAmDiYX5pgxlOg%3D%3D; session=eyJ1c2VyIjp7InRlbmFudElkIjoiNTI4IiwidGVuYW50IjoiZHRib29zdCIsImFjY291bnRUeXBlIjoxLCJpZCI6MCwibmFtZSI6InVua25vd24iLCJhcHBzIjp7ImFkbWluIjp0cnVlLCJhbmFseXNlIjp0cnVlLCJhbmFseXNlLWZlIjp0cnVlLCJhcHBfbGFiZWxUb29scyI6dHJ1ZSwiYXBwX2xhYmVsX3Rvb2xzIjp0cnVlLCJjb25zb2xlIjp0cnVlLCJkbWMiOnRydWUsImR0Ym9vc3RfbG9nIjp0cnVlLCJleGFtcGxlIjp0cnVlLCJpcGUiOnRydWUsIm1hbGlhbmctY29tcy13ZWIiOnRydWUsIm90bV92MiI6dHJ1ZSwicGFja2FnZSI6dHJ1ZSwidGVzdF9jYXNlX2FwcCI6dHJ1ZSwicmUiOnRydWV9LCJpc093bmVyIjp0cnVlfSwiY2syIjoiZjBhYjk1OWZiM2MxMTYzNzc0YWUzNGQ3ZTZmNmQ3ODYiLCJhbGl5dW5QSyI6IjE2OTY0NjI3NjQzNzU1NzIiLCJhbGl5dW5JZCI6ImR0YioqKipAYWxpeXVuLmNvbSJ9; session.sig=0s-VooxqCmogmbpsc9tSXwVOLqI",
+        "x-csrf-token": "Ru2KzVmd-hUB_09u0oSGJflPBWMIfqHzbnz8"
+    }
+  },{
+      "host": "http://11.239.185.97",
+      "routes": [
+        "/api/otm*",
+        "/api/bos*",
+        "/api/canvases*",
+        "/api/canvas*",
+        "/api/bds*",
+        "/api/ws*",
+        "/api/folder*",
+        "/api/folders*",
+        "/api/meta*",
+        "/api/luser*",
+        "/api/cm*",
+        "/api/dt*",
+        "/api/resource*"
+      ]
+  },{
+    "host": "http://100.69.196.211",
+    "routes": [
+        "/api/v2/*",
+        "/tagcenter/*"
+    ]
+  }
+  ],
+  "locals": {
+    "available": ["en-US", "zh-CN"],
+    "default": "zh-CN",
+    "form": "properties",
+    "to": "json"
+  }
+}
