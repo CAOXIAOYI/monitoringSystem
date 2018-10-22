@@ -9,7 +9,10 @@ var createLogger = require('redux-logger');//版本较高
 // import DevTools from '../containers/DevTools';
 const enhancer = compose(
   // Middleware you want to use in development:
-  applyMiddleware(thunk, createLogger({}))
+  applyMiddleware(
+    thunk, 
+    createLogger({})
+  )
   // Required! Enable Redux DevTools with the monitors you chose
   // DevTools.instrument()
 );

@@ -19,7 +19,11 @@ class CurrentTime extends baseCom {
     this.props.systemTime().then((result)=>{
       let ct = moment().valueOf();
       this.difference = ct -bt;
+
+      
       this.timer = setInterval(() => this.tick(result.data.time), 1000);
+
+
       //this.system = setInterval(() => this.system(), 1800000);
     });
   }

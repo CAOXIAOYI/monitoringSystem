@@ -5,7 +5,7 @@ import {
   message,
   Button
 } from 'antd';
-//var UrlPoxy = 'http://188.188.2.180:8080'
+var UrlPoxy = 'http://dfh.jokco.com'
 
 exports.request = function request(method, url, data, callback) {
   if (!callback && typeof data === 'function') {
@@ -14,8 +14,8 @@ exports.request = function request(method, url, data, callback) {
   }
   function httpRequest(method, url, params, callback) {
     var setting = {
-      //url: UrlPoxy + url,
-      url: url,
+      url: UrlPoxy + url,
+      // url: url,
       data: params,
       type: method,
       dataType: 'json',
@@ -29,7 +29,7 @@ exports.request = function request(method, url, data, callback) {
         callback && callback(null, []);
       },
       success: function(data) {
-        console.log("httpRequest---ajax---success--->",data);
+        // console.log("httpRequest---ajax---success--->",data);
         if(!data.code){
           data.code = 'SUCCESS';
         }
@@ -59,10 +59,10 @@ exports.request = function request(method, url, data, callback) {
       setting.data = JSON.stringify(setting.data);
       setting.contentType = 'application/json; charset=utf-8';
     }
-    console.log("setting--->",setting);
+    // console.log("setting--->",setting);
     return $.ajax(setting);
   }
-  console.log("url=", url);
+  // console.log("url=", url);
 
   var mockData = {};
   if (url) {

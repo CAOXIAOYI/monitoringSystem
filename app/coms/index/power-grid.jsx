@@ -2,7 +2,8 @@
 
 var React = require('react');
 
-var Link = require('react-router').Link;
+import { browserHistory } from 'react-router'
+
 import {Icon } from 'antd';
 let classnames = require("classnames");
 require('./power-grid.less');
@@ -15,33 +16,14 @@ var PowerGrid = React.createClass({
     return {
     };
   },
-  //getSwitch(value,type){
   getSwitch(value){
     value = parseInt(value) || 0;
     let switchClass = classnames({
-      // "switch":true,
-      // "switch-one":type === "switch-one",
-      // "switch-two":type === "switch-two",
-      // "switch-three":type === "switch-three",
-      // "switch-four":type === "switch-four",
-      // "switch-five":type === "switch-five",
-      // "switch-six":type === "switch-six",
-      // "switch-seven":type === "switch-seven",
-      // "switch-eight":type === "switch-eight",
-      // "switch-nine":type === "switch-nine",
-      // "switch-ten":type === "switch-ten",
-      // "switch-eleven":type === "switch-eleven",
-      // "switch-twelve":type === "switch-twelve",
-      // "switch-thirteen":type === "switch-thirteen",
-      // "switch-fourteen":type === "switch-fourteen",
-      // "switch-fifteen":type === "switch-fifteen",
       "switch-on":value < 0.1,
       "switch-off":value >= 0.1
     });
     return switchClass;
-    // return(
-    //   <div className={switchClass}></div>
-    // )
+    
   },
   getValue(value){
     if(value){
@@ -50,12 +32,24 @@ var PowerGrid = React.createClass({
     return value || 0;
   },
   componentDidMount() {
+    const self = this;
     this.svg = d3.select("#path_1");
     this.zoomgroup = d3.select("#path_1_g");
     this.svg.on("dblclick.zoom", null)
         .call(d3.behavior.zoom().on("zoom", this._rescale));
-    //this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
+    this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
+
+
+    //跳转至"子系统监测-发电机"页面
+    d3.select('#dynamo').on('click',function(){
+      browserHistory.push('/monitoringSystem/pages/sub_system/electric');
+    })
+
+    
+
+
   },
+
   _rescale() {
     let scale = d3.event.scale;
     let trans = d3.event.translate;
@@ -162,6 +156,10 @@ var PowerGrid = React.createClass({
                   <stop  offset="1" style={{stopColor:"#9C9C9C"}}/>
                 </linearGradient>
                 </defs>
+
+
+              
+
               <g id="g_circle">
                 <ellipse className="st0" cx="662" cy="138.6" rx="28.5" ry="32.7"/>
                 <path className="st0" d="M646.2,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
@@ -175,6 +173,9 @@ var PowerGrid = React.createClass({
               </g>
               <g>
                 <text transform="matrix(0.8712 0 0 1 505.9941 145.3979)" className="non-stroke st9 st2">一号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 750.2354 145.3979)" className="non-stroke st9 st2">二号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 978.0625 145.3979)" className="non-stroke st9 st2">三号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 1249.5566 145.3979)" className="non-stroke st9 st2">停泊发电机</text>
                 <line id="polyline_1" className="st0" x1="662" y1="171.3" x2="660.5" y2="353.1"/>
                 <g>
                   <line id="polyline_1_1_" className="st0" x1="1140.4" y1="164.5" x2="1135.6" y2="353.1"/>
@@ -203,6 +204,7 @@ var PowerGrid = React.createClass({
                     <path className="st0" d="M1378.1,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
                   </g>
                 </g>
+                
               </g>
               <g>
                 <line className="st0" x1="61.5" y1="353.1" x2="1452.4" y2="353.1"/>
@@ -215,6 +217,10 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_4_">
                     <ellipse className="st0" cx="159.6" cy="602" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M143.8,602c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="159.6" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 140 700)" className="non-stroke st9 st3">发电机</text>
+
                   </g>
                 </g>
                 <g>
@@ -226,12 +232,18 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_6_">
                     <ellipse className="st0" cx="369" cy="602.6" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M353.2,602.6c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="369" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 350 700)" className="non-stroke st9 st3">发电机</text>
+
                   </g>
                 </g>
                 <g>
                   <g id="g_circle_8_">
                     <path className="st0" d="M695.3,607.7"/>
                     <path className="st0" d="M739.7,607.7"/>
+
+
                   </g>
                 </g>
                 <line id="polyline_4" className="st0" x1="1183.1" y1="353.1" x2="1183.1" y2="498.6"/>
@@ -267,6 +279,10 @@ var PowerGrid = React.createClass({
                     <g id="g_circle_5_">
                       <ellipse className="st0" cx="262.2" cy="602" rx="28.5" ry="32.7"/>
                       <path className="st0" d="M246.3,602c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                      <circle className="circle-status" cx="262.2" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                      <text transform="matrix(0.8712 0 0 1 240 700)" className="non-stroke st9 st3">发电机</text>
+
                     </g>
                   </g>
                 </g>
@@ -344,6 +360,11 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_11_">
                     <ellipse className="st0" cx="473.3" cy="607.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M457.4,607.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="473.2" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 453 700)" className="non-stroke st9 st3">发电机</text>
+
+
                   </g>
                 </g>
               </g>
@@ -591,10 +612,8 @@ var PowerGrid = React.createClass({
               <text transform="matrix(0.8712 0 0 1 461.6318 994.3447)" className="non-stroke st9 st2">2号应急照</text>
               <text transform="matrix(0.8712 0 0 1 461.6318 1017.4911)" className="non-stroke st9 st2">明变压器</text>
               <text transform="matrix(0.8712 0 0 1 375.4424 1131.9481)" className="non-stroke st9 st3">负载</text>
-              <text transform="matrix(0.8712 0 0 1 431.7988 729.2841)" className="non-stroke st9 st2">应急发电机</text>
-              <text transform="matrix(0.8712 0 0 1 750.2354 145.3979)" className="non-stroke st9 st2">二号主发电机</text>
-              <text transform="matrix(0.8712 0 0 1 978.0625 145.3979)" className="non-stroke st9 st2">三号主发电机</text>
-              <text transform="matrix(0.8712 0 0 1 1249.5566 145.3979)" className="non-stroke st9 st2">停泊发电机</text>
+              <text transform="matrix(0.8712 0 0 1 270 739.2841)" className="non-stroke st9 st2">应急发电机</text>
+              
               <path id="SVGID_x5F_2_x5F__1_" className="st0" d="M1183.1,640.8v53.1"/>
               <line id="polyline_2_9_" className="st0" x1="581.3" y1="640.4" x2="581.2" y2="689.5"/>
               <line id="polyline_4_3_" className="st0" x1="751.6" y1="651.6" x2="752.6" y2="863.2"/>
@@ -615,95 +634,95 @@ var PowerGrid = React.createClass({
               <line id="polyline_2_18_" className="st0" x1="1548.3" y1="539.7" x2="1548.3" y2="577.6"/>
               <line id="polyline_2_19_" className="st0" x1="1712.2" y1="540.4" x2="1712.2" y2="578.3"/>
 
-              <polygon className={this.getSwitch(monPoint12.i)} id="switch-one" points="165.8,442.9 152.5,442.9 152.9,406.5 166.2,406.5 "/>
+              <polygon className='switch-none-v' id="switch-one" points="165.8,442.9 152.5,442.9 152.9,406.5 166.2,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 168.4 410.5002)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint12.online==1?this.getValue(monPoint12.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint12.online==1?this.getValue(monPoint12.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint12.online==1?this.getValue(monPoint12.q):"--"}</tspan>
               </text>
 
-              <polygon className={this.getSwitch(monPoint15.i)} id="switch-two" points="268.5,442.9 255.2,442.9 255.6,406.5 268.9,406.5 "/>
+              <polygon className='switch-none-v' id="switch-two" points="268.5,442.9 255.2,442.9 255.6,406.5 268.9,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 271.8519 410.5004)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint15.online==1?this.getValue(monPoint15.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint15.online==1?this.getValue(monPoint15.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint15.online==1?this.getValue(monPoint15.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint11.i)} id="switch-three" points="373.4,442.9 360,442.9 360.4,406.5 373.7,406.5 "/>
+              <polygon className='switch-none-v' id="switch-three" points="373.4,442.9 360,442.9 360.4,406.5 373.7,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 378.4423 410.5004)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint11.online==1?this.getValue(monPoint11.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint11.online==1?this.getValue(monPoint11.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint11.online==1?this.getValue(monPoint11.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint10.i)} id="switch-four" points="479.9,442.9 466.5,442.9 466.9,406.5 480.3,406.5 "/>
+              <polygon className='switch-none-v' id="switch-four" points="479.9,442.9 466.5,442.9 466.9,406.5 480.3,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 483.4357 410.5006)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint10.online==1?this.getValue(monPoint10.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint10.online==1?this.getValue(monPoint10.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint10.online==1?this.getValue(monPoint10.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint9.i)} id="switch-five" points="587.5,442.9 574.3,442.9 574.6,406.5 587.9,406.5 "/>
+              <polygon className='switch-none-v' id="switch-five" points="587.5,442.9 574.3,442.9 574.6,406.5 587.9,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 591.7244 408.5003)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint9.online==1?this.getValue(monPoint9.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint9.online==1?this.getValue(monPoint9.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint9.online==1?this.getValue(monPoint9.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint2.i)} id="switch-six" points="667.8,277 654.3,277 654.8,240.6 668.2,240.6 "/>
+              <polygon className='switch-none-v' id="switch-six" points="667.8,277 654.3,277 654.8,240.6 668.2,240.6 "/>
               <text transform="matrix(0.8712 0 0 1 670.1498 244.5815)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint2.online==1?this.getValue(monPoint2.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint2.online==1?this.getValue(monPoint2.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint2.online==1?this.getValue(monPoint2.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint3.i)} id="switch-serven" points="842.8,277 829.4,277 829.8,240.6 843.2,240.6 "/>
+              <polygon className='switch-none-v' id="switch-serven" points="842.8,277 829.4,277 829.8,240.6 843.2,240.6 "/>
               <text transform="matrix(0.8712 0 0 1 848.1497 244.5813)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint3.online==1?this.getValue(monPoint3.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint3.online==1?this.getValue(monPoint3.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint3.online==1?this.getValue(monPoint3.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint1.i)} id="switch-eight" points="1400.4,277 1387,277 1387.4,240.6 1400.8,240.6 "/>
+              <polygon className='switch-none-v' id="switch-eight" points="1400.4,277 1387,277 1387.4,240.6 1400.8,240.6 "/>
               <text transform="matrix(0.8712 0 0 1 1406.7004 243.5813)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint1.online==1?this.getValue(monPoint1.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint1.online==1?this.getValue(monPoint1.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint1.online==1?this.getValue(monPoint1.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint4.i)} id="switch-nine" points="1144.8,277 1131.3,277 1131.8,240.6 1145.2,240.6 "/>
+              <polygon className='switch-none-v' id="switch-nine" points="1144.8,277 1131.3,277 1131.8,240.6 1145.2,240.6 "/>
                <text transform="matrix(0.8712 0 0 1 1151.4999 241.6)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint4.online==1?this.getValue(monPoint4.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint4.online==1?this.getValue(monPoint4.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint4.online==1?this.getValue(monPoint4.q):"--"}</tspan>
               </text>
               
-              <polygon className={this.getSwitch(monPoint8.i)} id="switch-ten" points="1189.7,438.9 1176.3,438.9 1176.7,402.5 1190.1,402.5 "/>
+              <polygon className='switch-none-v' id="switch-ten" points="1189.7,438.9 1176.3,438.9 1176.7,402.5 1190.1,402.5 "/>
               <text transform="matrix(0.8712 0 0 1 1190.1001 402.4888)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint8.online==1?this.getValue(monPoint8.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint8.online==1?this.getValue(monPoint8.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint8.online==1?this.getValue(monPoint8.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint7.i)} id="switch-eleven" points="1277.7,438.9 1264.3,438.9 1264.7,402.5 1278.1,402.5 "/>
+              <polygon className='switch-none-v' id="switch-eleven" points="1277.7,438.9 1264.3,438.9 1264.7,402.5 1278.1,402.5 "/>
               <text transform="matrix(0.8712 0 0 1 1279.1003 401.5812)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint7.online==1?this.getValue(monPoint7.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint7.online==1?this.getValue(monPoint7.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint7.online==1?this.getValue(monPoint7.q):"--"}</tspan>
               </text>
               
-              <polygon className={this.getSwitch(monPoint5.i)} id="switch-twelve"  points="1554.8,444.1 1541.4,444.1 1541.8,407.7 1555.2,407.7 "/>
+              <polygon className='switch-none-v' id="switch-twelve"  points="1554.8,444.1 1541.4,444.1 1541.8,407.7 1555.2,407.7 "/>
               <text transform="matrix(0.8712 0 0 1 1558.2004 404.5608)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint5.online==1?this.getValue(monPoint5.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint5.online==1?this.getValue(monPoint5.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint5.online==1?this.getValue(monPoint5.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint6.i)} id="switch-thirteen" points="1368.7,438.9 1355.3,438.9 1355.7,402.5 1369.1,402.5 "/>
+              <polygon className='switch-none-v' id="switch-thirteen" points="1368.7,438.9 1355.3,438.9 1355.7,402.5 1369.1,402.5 "/>
               <text transform="matrix(0.8712 0 0 1 1374.0111 401.5811)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint6.online==1?this.getValue(monPoint6.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint6.online==1?this.getValue(monPoint6.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint6.online==1?this.getValue(monPoint6.q):"--"}</tspan>
               </text>
 
-              <polygon className={this.getSwitch(monPoint13.i)} id="switch-fourteen" points="758.6,757.4 745.2,757.4 745.6,721 759,721 "/>
+              <polygon className='switch-none-v' id="switch-fourteen" points="758.6,757.4 745.2,757.4 745.6,721 759,721 "/>
               <text transform="matrix(0.8712 0 0 1 767.4003 729.2849)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint13.online==1?this.getValue(monPoint13.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint13.online==1?this.getValue(monPoint13.p):"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint13.online==1?this.getValue(monPoint13.q):"--"}</tspan>
               </text>
-              <polygon className={this.getSwitch(monPoint14.i)} id="switch-fifteen"  points="1061,757.4 1047.6,757.4 1048,721 1061.4,721 "/>
+              <polygon className='switch-none-v' id="switch-fifteen"  points="1061,757.4 1047.6,757.4 1048,721 1061.4,721 "/>
               <text transform="matrix(0.8712 0 0 1 1071.5503 729.2845)" className="st12 text">
                 <tspan x="0" y="0" className="st6 st2">I: {monPoint14.online==1?this.getValue(monPoint14.i):"--"}</tspan>
                 <tspan x="0" y="26.2" className="st6 st2">P:{monPoint14.online==1?this.getValue(monPoint14.p):"--"}</tspan>
@@ -758,6 +777,13 @@ var PowerGrid = React.createClass({
                 有功(P)：<tspan className="text">kW </tspan> 
                 无功(Q)：<tspan className="text">kVar </tspan> 
               </text>
+
+              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
+              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_2'></rect>
+              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
+              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
+
+              
             </g>
           </switch>
         </svg>

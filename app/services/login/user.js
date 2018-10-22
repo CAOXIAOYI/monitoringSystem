@@ -14,7 +14,7 @@ var HttpRequest = require("../../httpCenter/request");
 //   return Promise.resolve(user);
 // }
 function getUser(userInfo) {
-  console.log("userInfo--->",userInfo);
+  // console.log("userInfo--->",userInfo);
   //return new Promise((resolve,reject) => {
     //console.log("resolve--->",resolve);
     //HttpRequest.request("GET","/console/api/tenant","",{},function(error,data){
