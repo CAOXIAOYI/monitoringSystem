@@ -52,7 +52,7 @@ class Header extends baseCom {
   }
   tick() {
     // 每3s执行一次
-    this.props.latestEvent();
+    // this.props.latestEvent();
   }
   
   render() {
