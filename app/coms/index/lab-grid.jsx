@@ -18,7 +18,7 @@ var LabGrid = React.createClass({
     };
   },
   getHSwitch(value){
-    value = parseInt(value) || 0;
+    value = parseInt(value) || 0; 
     let switchClass = classnames({
       
       "switch-on-h":value < 0.1,
@@ -50,10 +50,20 @@ var LabGrid = React.createClass({
         .call(d3.behavior.zoom().on("zoom", this._rescale));
     //this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
-    //跳转至"子系统监测-发电机"页面
-    d3.select('.room').on('click',function(){
-      browserHistory.push('/monitoringSystem/pages/sub_system/electric');
+    //跳转至"子系统监测-实验室"页面
+    d3.select('.room').on('mousedown',function(e){
+      self.mouseDownX = d3.event.x;
+      self.mouseDownY = d3.event.y;
     })
+
+    d3.select('.room').on('mouseup',function(){
+      const mouseUpX = d3.event.x;
+      const mouseUpY = d3.event.y;
+      if(Math.abs(mouseUpX - self.mouseDownX) > 10 || Math.abs(mouseUpY - self.mouseDownY) > 10){return }
+
+      browserHistory.push('/monitoringSystem/pages/sub_system/electric?type=6');  
+    })
+
   },
   _rescale() {
     let scale = d3.event.scale;
@@ -264,18 +274,29 @@ var LabGrid = React.createClass({
             <polygon id="switch-off-lende"  className="switch-off-h" points="191.1,149.9 183.5,149.9 183.5,130.7 191.1,130.7 "/>
 
             
-            <text transform="matrix(0.8712 0 0 1 700.9111 430.8001)" className="non-stroke st12 st6"> U：</text>
+            {/*<text transform="matrix(0.8712 0 0 1 700.9111 430.8001)" className="non-stroke st12 st6"> U：</text>
             <text transform="matrix(0.8712 0 0 1 725.9111 430.8001)" className="non-stroke st11 st6">{this.getValue(systemInfo.u)} V</text>
             <text transform="matrix(0.8712 0 0 1 700.9111 400.8001)" className="non-stroke st12 st6">f：</text>
-            <text transform="matrix(0.8712 0 0 1 725.9111 400.8001)" className="non-stroke st11 st6">{this.getValue(systemInfo.f)} Hz</text>
+            <text transform="matrix(0.8712 0 0 1 725.9111 400.8001)" className="non-stroke st11 st6">{this.getValue(systemInfo.f)} Hz</text>*/}
             <text transform="matrix(0.8712 0 0 1 75.5645 147.785)" className="non-stroke st12 st6">未投入使用</text>
             <text transform="matrix(0.8712 0 0 1 197.6172 147.785)" className="non-stroke st12 st6">投入使用</text>
-            <text transform="matrix(0.8712 0 0 1 64.9111 190.6575)" className="non-stroke st11 st6">电流(I)：</text>
+
+            <text transform="matrix(0.8712 0 0 1 61.4998 203.6577)" className="non-stroke st9 st4 larger">
+              系统频率：<tspan className="text">{this.getValue(systemInfo.f)} Hz</tspan>
+            </text>
+            <text transform="matrix(0.8712 0 0 1 61.4998 233.6577)" className="non-stroke st9 st4 larger">
+              实验室电网母线电压：<tspan className="text">{this.getValue(systemInfo.u)} V</tspan> 
+            </text>
+            <text transform="matrix(0.8712 0 0 1 61.4998 263.6577)" className="non-stroke st9 st4 larger">
+              安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} H</tspan> 
+            </text>
+
+            {/*<text transform="matrix(0.8712 0 0 1 64.9111 190.6575)" className="non-stroke st11 st6">电流(I)：</text>
             <text transform="matrix(0.8712 0 0 1 120.7617 190.6575)" className="non-stroke st12 st6">A</text>
             <text transform="matrix(0.8712 0 0 1 135.5098 190.6575)" className="non-stroke st11 st6">有功(P)：</text>
             <text transform="matrix(0.8712 0 0 1 195.4082 190.6575)" className="non-stroke st12 st6">kW </text>
             <text transform="matrix(0.8712 0 0 1 223.71 190.6575)" className="non-stroke st11 st6">无功(Q)：</text>
-            <text transform="matrix(0.8712 0 0 1 285.2959 190.6575)" className="non-stroke st12 st6"> kVar </text>
+            <text transform="matrix(0.8712 0 0 1 285.2959 190.6575)" className="non-stroke st12 st6"> kVar </text>*/}
             <g>
               <polygon className="st0" points="603.3,629.3 517.2,629.5 517.7,588.2 603.9,587.9  "/>
               <g>
@@ -359,7 +380,7 @@ var LabGrid = React.createClass({
                 <text transform="matrix(0.8712 0 0 1 118.0635 609.8489)" className="non-stroke st19 st7">通用干湿实验室</text>
                 <text transform="matrix(0.8712 0 0 1 227.835 610.7005)" className="non-stroke st5 st7">2</text>
 
-                <rect width="215" height="75" x="75" y="568" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+                <rect width="215" height="75" x="75" y="568" className='room'></rect>
 
               </g>
             </g>
@@ -370,7 +391,7 @@ var LabGrid = React.createClass({
                 <text transform="matrix(0.8712 0 0 1 118.0635 780.1693)" className="non-stroke st19 st7">通用干湿实验室</text>
                 <text transform="matrix(0.8712 0 0 1 227.835 781.0208)" className="st0 st5 st7">3</text>
 
-                <rect width="215" height="75" x="75" y="738" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+                <rect width="215" height="75" x="75" y="738" className='room'></rect>
 
               </g>
             </g>
@@ -380,7 +401,7 @@ var LabGrid = React.createClass({
                 <polygon className="st0" points="289.2,981.9 76.8,982.3 76.1,914.4 288.4,913    "/>
                 <text transform="matrix(0.8712 0 0 1 119.3291 954.1517)" className="non-stroke st19 st7">数据处理实验室</text>
 
-                <rect width="215" height="75" x="75" y="912" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+                <rect width="215" height="75" x="75" y="912" className='room'></rect>
 
               </g>
             </g>

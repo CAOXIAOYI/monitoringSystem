@@ -16,47 +16,18 @@ let PRIVILEGE = require("../../../../services/privilege.js");
 
 require('./sub-header.less');
 
-
-function getHeaderKey() {
-  var urlObject = {
-    'index': 'index',
-    'harmonic': 'harmonic',
-    'sub_system':'sub_system',
-    'power_quality':'power_quality',
-    'device_characteristics':'device_characteristics',
-    'harmonic':'harmonic',
-    'device_control': 'device_control',
-    'param_setting':'param_setting',
-    'electrical_machine':'electrical_machine',
-    'history_data':'history_data',
-    'monitor_status':'monitor_status',
-    'system_config':'system_config',
-  };
-
-  let selectedKeys = [];
-  for (let key in urlObject) {
-    if (window.location.pathname.indexOf(key) !== -1) {
-      selectedKeys.push(urlObject[key]);
-      break;
-    }
-  }
-  if (selectedKeys.length === 0) {
-    selectedKeys = ['index'];
-  }
-  return selectedKeys;
-}
-
 class SubHeader extends baseCom {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedKeys: getHeaderKey() || ["index"],
-    };
+    // this.state = {
+    //   selectedKeys: getHeaderKey() || ["index"],
+    // };
   }
   handleClick(e){
-    this.setState({
-      selectedKeys: [e.key],
-    });
+    this.props.subHeaderClick && this.props.subHeaderClick(e)
+    // this.setState({
+    //   selectedKeys: [e.key],
+    // });
   }
   render() {
     let privilege = window.localStorage.getItem("privilege");
@@ -141,8 +112,8 @@ class SubHeader extends baseCom {
           );
        }
     }
-   
-    let selectedKeys = this.state.selectedKeys;
+    
+    let selectedKeys = this.props.selectedKeys;
 
     return (
         <div className="sub-menu-header">

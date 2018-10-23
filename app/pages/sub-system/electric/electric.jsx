@@ -87,8 +87,9 @@ let Electric = React.createClass({
     });
   },
   render: function () {
-   const query = this.props.location.query;
-   var currentDeviceType = query.type || this.props.subSystemMeta.currentDeviceType;
+
+   var currentDeviceType = this.props.subSystemMeta.currentDeviceType;
+
    var monitorDatas = this.props.subSystemMeta.monitorDatas;
    //let _monitorDatas = [];
    let _header = "";

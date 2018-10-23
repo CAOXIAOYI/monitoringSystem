@@ -40,19 +40,31 @@ var PowerGrid = React.createClass({
     this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
 
-    
+
+
+
     //跳转至"子系统监测"页面
     this.goSubSystem('.ele-1',1);
     this.goSubSystem('.ele-2',2);
     this.goSubSystem('.ele-3',3);
     this.goSubSystem('.ele-4',4);
 
-
   },
 
   goSubSystem(select,id){
+    const self = this;
+    d3.select(select).on('mousedown',function(e){
 
-    d3.select(select).on('click',function(){
+      self.mouseDownX = d3.event.x;
+      self.mouseDownY = d3.event.y;
+      
+    })
+
+    d3.select(select).on('mouseup',function(){
+      const mouseUpX = d3.event.x;
+      const mouseUpY = d3.event.y;
+      if(Math.abs(mouseUpX - self.mouseDownX) > 10 || Math.abs(mouseUpY - self.mouseDownY) > 10){return }
+
       browserHistory.push('/monitoringSystem/pages/sub_system/electric?type=' + id);  
     })
     
@@ -87,53 +99,69 @@ var PowerGrid = React.createClass({
     let monPoint15 = {};
     let systemInfo = {};
 
+    let motherlineStatus = '#fff';
     if(this.props.data.homeDatas["1"]){
       systemInfo = this.props.data.homeDatas["1"].system || {};
       this.props.data.homeDatas["1"].data.map((item, index) => {
         if(item.meterId === 1){
           monPoint1 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 2){
           monPoint2 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 3){
           monPoint3 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 4){
           monPoint4 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 5){
           monPoint5 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 6){
           monPoint6 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 7){
           monPoint7 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 8){
           monPoint8 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 9){
           monPoint9 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 10){
           monPoint10 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 11){
           monPoint11 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 12){
           monPoint12 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 13){
           monPoint13 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 14){
           monPoint14 = item;
+          motherlineStatus = 'red';
         }
         if(item.meterId === 15){
           monPoint15 = item;
+          motherlineStatus = 'red';
         }
       });
     }
@@ -169,8 +197,7 @@ var PowerGrid = React.createClass({
                 <ellipse className="st0" cx="662" cy="138.6" rx="28.5" ry="32.7"/>
                 <path className="st0" d="M646.2,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
 
-                <circle className="circle-status" cx="712" cy="138.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
-
+                <circle className={monPoint2.online==1?"circle-status red":'circle-status'} cx="712" cy="138.6" r="10"/>
 
               </g>
               <g id="g_rect">
@@ -179,12 +206,17 @@ var PowerGrid = React.createClass({
               <g id="g_double_ellipse">
                 <ellipse className="st0" cx="557.5" cy="689.5" rx="23.8" ry="18.2"/>
                 <ellipse className="st0" cx="605" cy="689.5" rx="23.8" ry="18.2"/>
+
+                <circle className={monPoint9.online==1?"circle-status red":'circle-status'} cx="580" cy="720.6" r="10"/>
+                <text transform="matrix(0.8712 0 0 1 547 750)" className="non-stroke st9 st3">艏侧推电机</text>
+
               </g>
               <g>
-                <text transform="matrix(0.8712 0 0 1 505.9941 145.3979)" className="non-stroke st9 st2">一号主发电机</text>
-                <text transform="matrix(0.8712 0 0 1 750.2354 145.3979)" className="non-stroke st9 st2">二号主发电机</text>
-                <text transform="matrix(0.8712 0 0 1 978.0625 145.3979)" className="non-stroke st9 st2">三号主发电机</text>
-                <text transform="matrix(0.8712 0 0 1 1249.5566 145.3979)" className="non-stroke st9 st2">停泊发电机</text>
+                <text transform="matrix(0.8712 0 0 1 535.9941 145.3979)" className="non-stroke st9 st2">一号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 790.2354 145.3979)" className="non-stroke st9 st2">二号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 1010.0625 145.3979)" className="non-stroke st9 st2">三号主发电机</text>
+                <text transform="matrix(0.8712 0 0 1 1279.5566 145.3979)" className="non-stroke st9 st2">停泊发电机</text>
+
                 <line id="polyline_1" className="st0" x1="662" y1="171.3" x2="660.5" y2="353.1"/>
                 <g>
                   <line id="polyline_1_1_" className="st0" x1="1140.4" y1="164.5" x2="1135.6" y2="353.1"/>
@@ -199,7 +231,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="915.5" cy="131.8" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M899.6,131.8c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="965.5" cy="138.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint3.online==1?"circle-status red":'circle-status'} cx="965.5" cy="138.6" r="10"/>
 
                   </g>
                 </g>  
@@ -209,7 +241,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1140.4" cy="131.8" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1124.5,131.8c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="1190.5" cy="135.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint4.online==1?"circle-status red":'circle-status'} cx="1190.5" cy="135.6" r="10"/>
 
                   </g>
                 </g>
@@ -218,14 +250,14 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1393.9" cy="138.6" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1378.1,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="1443.5" cy="135.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint1.online==1?"circle-status red":'circle-status'} cx="1443.5" cy="135.6" r="10"/>
 
                   </g>
                 </g>
                 
               </g>
               <g>
-                <line className="st0" x1="61.5" y1="353.1" x2="1452.4" y2="353.1"/>
+                <line className="st0" x1="61.5" y1="353.1" x2="1452.4" y2="353.1" strokeWidth='4' style={{stroke:motherlineStatus}}/>
                 <line className="st0" x1="1484.1" y1="353.1" x2="1610.8" y2="353.1"/>
                 <line className="st0" x1="1658.3" y1="353.1" x2="1769.2" y2="353.1"/>
                 <line id="polyline_2" className="st0" x1="159.9" y1="351.7" x2="159.9" y2="493.7"/>
@@ -236,7 +268,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="159.6" cy="602" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M143.8,602c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="159.6" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint12.online==1?"circle-status red":'circle-status'} cx="159.6" cy="665" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 140 700)" className="non-stroke st9 st3">发电机</text>
 
                   </g>
@@ -251,7 +283,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="369" cy="602.6" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M353.2,602.6c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="369" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint11.online==1?"circle-status red":'circle-status'} cx="369" cy="665" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 350 700)" className="non-stroke st9 st3">发电机</text>
 
                   </g>
@@ -282,6 +314,10 @@ var PowerGrid = React.createClass({
                   <g id="g_double_ellipse_1_">
                     <ellipse className="st0" cx="1159.4" cy="689.5" rx="23.8" ry="18.2"/>
                     <ellipse className="st0" cx="1206.9" cy="689.5" rx="23.8" ry="18.2"/>
+
+                    <circle className={monPoint8.online==1?"circle-status red":'circle-status'} cx="1183" cy="720.6" r="10"/>
+                    <text transform="matrix(0.8712 0 0 1 1149 750)" className="non-stroke st9 st3">艏侧推电机</text>
+
                   </g>
                 </g>
                 <g>
@@ -298,7 +334,7 @@ var PowerGrid = React.createClass({
                       <ellipse className="st0" cx="262.2" cy="602" rx="28.5" ry="32.7"/>
                       <path className="st0" d="M246.3,602c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                      <circle className="circle-status" cx="262.2" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                      <circle className={monPoint15.online==1?"circle-status red":'circle-status'} cx="262.2" cy="665" r="10"/>
                       <text transform="matrix(0.8712 0 0 1 240 700)" className="non-stroke st9 st3">发电机</text>
 
                     </g>
@@ -379,8 +415,8 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="473.3" cy="607.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M457.4,607.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="473.2" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
-                    <text transform="matrix(0.8712 0 0 1 453 700)" className="non-stroke st9 st3">发电机</text>
+                    <circle className={monPoint10.online==1?"circle-status red":'circle-status'} cx="473.2" cy="665" r="10"/>
+                    <text transform="matrix(0.8712 0 0 1 435 700)" className="non-stroke st9 st3">1号推进电机</text>
 
 
                   </g>
@@ -401,8 +437,8 @@ var PowerGrid = React.createClass({
                       <ellipse className="st0" cx="1271.3" cy="611.7" rx="28.5" ry="32.7"/>
                       <path className="st0" d="M1255.4,611.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                      <circle className="circle-status" cx="1271.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
-                      <text transform="matrix(0.8712 0 0 1 1251 700)" className="non-stroke st9 st3">发电机</text>
+                      <circle className={monPoint7.online==1?"circle-status red":'circle-status'} cx="1271.3" cy="665" r="10"/>
+                      <text transform="matrix(0.8712 0 0 1 1241 700)" className="non-stroke st9 st3">2号推进电机</text>
 
                     </g>
                   </g>
@@ -422,7 +458,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1548.3" cy="610.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1532.4,610.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="1548.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint5.online==1?"circle-status red":'circle-status'} cx="1548.3" cy="665" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 1528 700)" className="non-stroke st9 st3">发电机</text>
 
                   </g>
@@ -442,7 +478,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1711.3" cy="611.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1695.4,611.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="1711.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={'circle-status'} cx="1711.3" cy="665" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 1691 700)" className="non-stroke st9 st3">发电机</text>
 
 
@@ -463,7 +499,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1362.3" cy="610.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1346.4,610.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
 
-                    <circle className="circle-status" cx="1362.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint6.online==1?"circle-status red":'circle-status'} cx="1362.3" cy="665" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 1342 700)" className="non-stroke st9 st3">发电机</text>
 
                   </g>
@@ -476,7 +512,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="1054.6" cy="626.2" rx="15.8" ry="18.2"/>
                     <ellipse className="st0" cx="1054.6" cy="644.4" rx="15.8" ry="18.2"/>
 
-                    <circle className="circle-status" cx="1094.6" cy="626.2" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint14.online==1?"circle-status red":'circle-status'} cx="1094.6" cy="626.2" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 1074.6 655.2)" className="non-stroke st9 st3">变压器</text>
 
                   </g>
@@ -489,7 +525,7 @@ var PowerGrid = React.createClass({
                     <ellipse className="st0" cx="751.6" cy="615.2" rx="15.8" ry="18.2"/>
                     <ellipse className="st0" cx="751.6" cy="633.4" rx="15.8" ry="18.2"/>
 
-                    <circle className="circle-status" cx="791" cy="615.2" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <circle className={monPoint13.online==1?"circle-status red":'circle-status'} cx="791" cy="615.2" r="10"/>
                     <text transform="matrix(0.8712 0 0 1 771 645.2)" className="non-stroke st9 st3">变压器</text>
 
                   </g>
@@ -804,14 +840,15 @@ var PowerGrid = React.createClass({
               <polygon className="switch-off"  points="191.1,149.9 183.5,149.9 183.5,130.7 191.1,130.7 "/>
               <polygon className="switch-on" points="68.2,149.9 61.5,149.7 61.6,130.7 68.3,130.9 "/>
 
-              <text transform="matrix(0.8712 0 0 1 68.9109 344)" className="non-stroke st9 st2">
+              {/*<text transform="matrix(0.8712 0 0 1 68.9109 344)" className="non-stroke st9 st2">
                 f：<tspan className="text">{this.getValue(systemInfo.f)} Hz</tspan>
               </text>
-              <text transform="matrix(0.8712 0 0 1 1484.0996 344)" id="three-title" className="non-stroke st9 st2">
-                U：<tspan className="text">{monPoint5.online==1?this.getValue(monPoint5.voltage):"--"} V</tspan>
-              </text>
+              
               <text transform="matrix(0.8712 0 0 1 180.5395 344)" id="sec-title" className="non-stroke st9 st2">
                 U：<tspan className="text">{this.getValue(systemInfo.u)} V</tspan>
+              </text>*/}
+              <text transform="matrix(0.8712 0 0 1 1484.0996 344)" id="three-title" className="non-stroke st9 st2">
+                U：<tspan className="text">{monPoint5.online==1?this.getValue(monPoint5.voltage):"--"} V</tspan>
               </text>
               <text transform="matrix(0.8712 0 0 1 75.5645 147.7849)" className="non-stroke st9 st2">未投入使用</text>
               <text transform="matrix(0.8712 0 0 1 197.6169 147.7849)" className="non-stroke st9 st2">投入使用</text>
@@ -822,25 +859,26 @@ var PowerGrid = React.createClass({
                 无功(Q)：<tspan className="text">kVar </tspan> 
               </text>*/}
               <text transform="matrix(0.8712 0 0 1 61.4998 203.6577)" className="non-stroke st9 st4">
-                系统频率：<tspan className="text">A </tspan>
-                动力电网母线电压：<tspan className="text">kW </tspan> 
+                系统频率：<tspan className="text">{this.getValue(systemInfo.f)} Hz</tspan>
               </text>
               <text transform="matrix(0.8712 0 0 1 61.4998 233.6577)" className="non-stroke st9 st4">
-                实验室电网电压：<tspan className="text">kVar </tspan> 
-                安全运行小时数：<tspan className="text">kVar </tspan> 
+                动力电网母线电压：<tspan className="text">{this.getValue(systemInfo.u)} V</tspan> 
+              </text>
+              <text transform="matrix(0.8712 0 0 1 61.4998 263.6577)" className="non-stroke st9 st4">
+                安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} H</tspan> 
               </text>
 
 
-              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" className='ele-1'></rect>
+              <rect width="930" height="90" x="500" y="95" className='ele-1'></rect>
 
-              <rect width="200" height="230" x="440" y="485" className='ele-2' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
-              <rect width="175" height="230" x="1130" y="485" className="ele-2" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="200" height="230" x="440" y="485" className='ele-2'></rect>
+              <rect width="175" height="230" x="1130" y="485" className="ele-2"></rect>
 
-              <rect width="290" height="230" x="120" y="485" className="ele-3" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
-              <rect width="430" height="230" x="1330" y="485" className="ele-3" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="290" height="230" x="120" y="485" className="ele-3"></rect>
+              <rect width="430" height="230" x="1330" y="485" className="ele-3"></rect>
               
-              <rect width="90" height="60" x="730" y="595" className="ele-4" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
-              <rect width="90" height="60" x="1030" y="605" className="ele-4" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="90" height="60" x="730" y="595" className="ele-4"></rect>
+              <rect width="90" height="60" x="1030" y="605" className="ele-4"></rect>
 
               
             </g>

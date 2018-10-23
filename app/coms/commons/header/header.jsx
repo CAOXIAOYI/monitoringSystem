@@ -25,14 +25,50 @@ import { browserHistory } from 'react-router'
 
 require('./header.less');
 
+function getHeaderKey() {
+  var urlObject = {
+    'index': 'index',
+    'harmonic': 'harmonic',
+    'sub_system':'sub_system',
+    'power_quality':'power_quality',
+    'device_characteristics':'device_characteristics',
+    'harmonic':'harmonic',
+    'device_control': 'device_control',
+    'param_setting':'param_setting',
+    'electrical_machine':'electrical_machine',
+    'history_data':'history_data',
+    'monitor_status':'monitor_status',
+    'system_config':'system_config'
+  };
+
+  let selectedKeys = [];
+  for (let key in urlObject) {
+    if (window.location.pathname.indexOf(key) !== -1) {
+      selectedKeys.push(urlObject[key]);
+      break;
+    }
+  }
+  if (selectedKeys.length === 0) {
+    selectedKeys = ['index'];
+  }
+
+  return selectedKeys;
+}
 
 class Header extends baseCom {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'mail'
+      current: 'mail',
+      selectedKeys:this.props.selectedKeys || ['index']
     };
     
+  }
+
+  subHeaderClick(e){
+    this.setState({
+      selectedKeys: [e.key],
+    });
   }
 
   //moment(new Date).format("YYYY-MM-DD HH:mm:ss")
@@ -48,12 +84,26 @@ class Header extends baseCom {
     this.timer = setInterval(() => this.tick(), 3000);
   }
   componentWillUnmount(){
+
     clearInterval(this.timer);
   }
+
+  componentDidUpdate(){
+
+    if(getHeaderKey()[0] !== this.state.selectedKeys[0]){
+      this.setState({
+        selectedKeys:getHeaderKey()
+      })
+    }
+
+  }
+
   tick() {
     // 每3s执行一次
     this.props.latestEvent();
   }
+
+  
   
   render() {
 
@@ -88,7 +138,10 @@ class Header extends baseCom {
             </SubMenu>
           </Menu>
         </div>
-        <SubHeader/>
+        <SubHeader 
+          selectedKeys={this.state.selectedKeys}
+          subHeaderClick={this.subHeaderClick.bind(this)}
+        />
       </header>
     );
   }

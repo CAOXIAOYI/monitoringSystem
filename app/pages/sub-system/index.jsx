@@ -8,10 +8,21 @@ let subSystemGen = require("../../coms/commons/sidebar/config/sub-system");
 
 var AppPages = React.createClass({
   getInitialState() {
+
+    const type = this.props.location.query.type;
+    let key ='dynamo',defaultSeclectKey=[];
+    if(type){
+      const menu = subSystemGen().menu;
+      this.props.subSystemMonitor({},{deviceType:Number(type)});
+      key = menu[Number(type) - 1].key;
+    }
+
+    defaultSeclectKey.push(key);
+
     return {
       isStretchTitle: false,
       hasNoPadding: false,
-      selectKey:["dynamo"],
+      selectKey:defaultSeclectKey,
     };
   },
   stretchClick(property) {
