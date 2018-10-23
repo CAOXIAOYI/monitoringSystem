@@ -40,14 +40,22 @@ var PowerGrid = React.createClass({
     this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
 
-    //跳转至"子系统监测-发电机"页面
-    d3.select('#dynamo').on('click',function(){
-      browserHistory.push('/monitoringSystem/pages/sub_system/electric');
-    })
-
     
+    //跳转至"子系统监测"页面
+    this.goSubSystem('.ele-1',1);
+    this.goSubSystem('.ele-2',2);
+    this.goSubSystem('.ele-3',3);
+    this.goSubSystem('.ele-4',4);
 
 
+  },
+
+  goSubSystem(select,id){
+
+    d3.select(select).on('click',function(){
+      browserHistory.push('/monitoringSystem/pages/sub_system/electric?type=' + id);  
+    })
+    
   },
 
   _rescale() {
@@ -157,12 +165,13 @@ var PowerGrid = React.createClass({
                 </linearGradient>
                 </defs>
 
-
-              
-
               <g id="g_circle">
                 <ellipse className="st0" cx="662" cy="138.6" rx="28.5" ry="32.7"/>
                 <path className="st0" d="M646.2,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
+
+                <circle className="circle-status" cx="712" cy="138.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+
+
               </g>
               <g id="g_rect">
                 <polyline className="st0" points="191.6,493.7 128.3,493.7 128.3,530 191.6,530 191.6,493.7 128.3,530   "/>
@@ -189,6 +198,9 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_1_">
                     <ellipse className="st0" cx="915.5" cy="131.8" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M899.6,131.8c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="965.5" cy="138.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+
                   </g>
                 </g>  
                 <rect x="890.1" y="344" className="switch-none-h" width="31.7" height="18.2"/>
@@ -196,12 +208,18 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_2_">
                     <ellipse className="st0" cx="1140.4" cy="131.8" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1124.5,131.8c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="1190.5" cy="135.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+
                   </g>
                 </g>
                 <g>
                   <g id="g_circle_3_">
                     <ellipse className="st0" cx="1393.9" cy="138.6" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1378.1,138.6c3.2-9.1,15.8-9.1,15.8,0c0,9.1,15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="1443.5" cy="135.6" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+
                   </g>
                 </g>
                 
@@ -382,6 +400,10 @@ var PowerGrid = React.createClass({
                     <g id="g_circle_12_">
                       <ellipse className="st0" cx="1271.3" cy="611.7" rx="28.5" ry="32.7"/>
                       <path className="st0" d="M1255.4,611.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                      <circle className="circle-status" cx="1271.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                      <text transform="matrix(0.8712 0 0 1 1251 700)" className="non-stroke st9 st3">发电机</text>
+
                     </g>
                   </g>
                 </g>
@@ -399,6 +421,10 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_13_">
                     <ellipse className="st0" cx="1548.3" cy="610.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1532.4,610.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="1548.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 1528 700)" className="non-stroke st9 st3">发电机</text>
+
                   </g>
                 </g>
               </g>
@@ -415,6 +441,11 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_14_">
                     <ellipse className="st0" cx="1711.3" cy="611.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1695.4,611.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="1711.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 1691 700)" className="non-stroke st9 st3">发电机</text>
+
+
                   </g>
                 </g>
               </g>
@@ -431,6 +462,10 @@ var PowerGrid = React.createClass({
                   <g id="g_circle_15_">
                     <ellipse className="st0" cx="1362.3" cy="610.7" rx="28.5" ry="32.7"/>
                     <path className="st0" d="M1346.4,610.7c3.2-9.1,15.8-9.1,15.8,0s15.8,9.1,15.8,0"/>
+
+                    <circle className="circle-status" cx="1362.3" cy="665" r="15" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 1342 700)" className="non-stroke st9 st3">发电机</text>
+
                   </g>
                 </g>
               </g>
@@ -440,6 +475,10 @@ var PowerGrid = React.createClass({
                   <g id="g_double_circle_3_">
                     <ellipse className="st0" cx="1054.6" cy="626.2" rx="15.8" ry="18.2"/>
                     <ellipse className="st0" cx="1054.6" cy="644.4" rx="15.8" ry="18.2"/>
+
+                    <circle className="circle-status" cx="1094.6" cy="626.2" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 1074.6 655.2)" className="non-stroke st9 st3">变压器</text>
+
                   </g>
                 </g>
               </g>
@@ -449,6 +488,10 @@ var PowerGrid = React.createClass({
                   <g id="g_double_circle_4_">
                     <ellipse className="st0" cx="751.6" cy="615.2" rx="15.8" ry="18.2"/>
                     <ellipse className="st0" cx="751.6" cy="633.4" rx="15.8" ry="18.2"/>
+
+                    <circle className="circle-status" cx="791" cy="615.2" r="10" style={{fill:'rgba(255,0,0,.2)'}}/>
+                    <text transform="matrix(0.8712 0 0 1 771 645.2)" className="non-stroke st9 st3">变压器</text>
+
                   </g>
                 </g>
               </g>
@@ -772,16 +815,32 @@ var PowerGrid = React.createClass({
               </text>
               <text transform="matrix(0.8712 0 0 1 75.5645 147.7849)" className="non-stroke st9 st2">未投入使用</text>
               <text transform="matrix(0.8712 0 0 1 197.6169 147.7849)" className="non-stroke st9 st2">投入使用</text>
-              <text transform="matrix(0.8712 0 0 1 61.4998 203.6577)" className="non-stroke st9 st2">
+             
+              {/*<text transform="matrix(0.8712 0 0 1 61.4998 203.6577)" className="non-stroke st9 st2">
                 电流(I)：<tspan className="text">A </tspan>
                 有功(P)：<tspan className="text">kW </tspan> 
                 无功(Q)：<tspan className="text">kVar </tspan> 
+              </text>*/}
+              <text transform="matrix(0.8712 0 0 1 61.4998 203.6577)" className="non-stroke st9 st4">
+                系统频率：<tspan className="text">A </tspan>
+                动力电网母线电压：<tspan className="text">kW </tspan> 
+              </text>
+              <text transform="matrix(0.8712 0 0 1 61.4998 233.6577)" className="non-stroke st9 st4">
+                实验室电网电压：<tspan className="text">kVar </tspan> 
+                安全运行小时数：<tspan className="text">kVar </tspan> 
               </text>
 
-              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
-              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_2'></rect>
-              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
-              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" id='electric_1'></rect>
+
+              <rect width="930" height="90" style={{fill: 'rgba(255, 0, 0, .2)'}} x="500" y="95" className='ele-1'></rect>
+
+              <rect width="200" height="230" x="440" y="485" className='ele-2' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="175" height="230" x="1130" y="485" className="ele-2" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+
+              <rect width="290" height="230" x="120" y="485" className="ele-3" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="430" height="230" x="1330" y="485" className="ele-3" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              
+              <rect width="90" height="60" x="730" y="595" className="ele-4" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+              <rect width="90" height="60" x="1030" y="605" className="ele-4" style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
 
               
             </g>

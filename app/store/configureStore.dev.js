@@ -11,7 +11,7 @@ const enhancer = compose(
   // Middleware you want to use in development:
   applyMiddleware(
     thunk, 
-    createLogger({})
+    // createLogger({})
   )
   // Required! Enable Redux DevTools with the monitors you chose
   // DevTools.instrument()

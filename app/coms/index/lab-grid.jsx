@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+import { browserHistory } from 'react-router'
 
 require('./lab-grid.less');
 
@@ -19,21 +20,7 @@ var LabGrid = React.createClass({
   getHSwitch(value){
     value = parseInt(value) || 0;
     let switchClass = classnames({
-      // "switch":true,
-      // "switch-one":type === "switch-one",
-      // "switch-two":type === "switch-two",
-      // "switch-three":type === "switch-three",
-      // "switch-four":type === "switch-four",
-      // "switch-five":type === "switch-five",
-      // "switch-six":type === "switch-six",
-      // "switch-seven":type === "switch-seven",
-      // "switch-eight":type === "switch-eight",
-      // "switch-nine":type === "switch-nine",
-      // "switch-ten":type === "switch-ten",
-      // "switch-eleven":type === "switch-eleven",
-      // "switch-twelve":type === "switch-twelve",
-      // "switch-thirteen":type === "switch-thirteen",
-      // "switch-fourteen":type === "switch-fourteen",
+      
       "switch-on-h":value < 0.1,
       "switch-off-h":value >= 0.1
     });
@@ -62,6 +49,11 @@ var LabGrid = React.createClass({
     this.svg.on("dblclick.zoom", null)
         .call(d3.behavior.zoom().on("zoom", this._rescale));
     //this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
+
+    //跳转至"子系统监测-发电机"页面
+    d3.select('.room').on('click',function(){
+      browserHistory.push('/monitoringSystem/pages/sub_system/electric');
+    })
   },
   _rescale() {
     let scale = d3.event.scale;
@@ -366,6 +358,9 @@ var LabGrid = React.createClass({
                 <polygon className="st0" points="287.9,638.5 75.6,638.8 74.8,570.9 287.1,569.6    "/>
                 <text transform="matrix(0.8712 0 0 1 118.0635 609.8489)" className="non-stroke st19 st7">通用干湿实验室</text>
                 <text transform="matrix(0.8712 0 0 1 227.835 610.7005)" className="non-stroke st5 st7">2</text>
+
+                <rect width="215" height="75" x="75" y="568" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+
               </g>
             </g>
             <g>
@@ -374,6 +369,9 @@ var LabGrid = React.createClass({
                 <polygon className="st0" points="287.9,808.8 75.6,809.1 74.8,741.2 287.1,739.9    "/>
                 <text transform="matrix(0.8712 0 0 1 118.0635 780.1693)" className="non-stroke st19 st7">通用干湿实验室</text>
                 <text transform="matrix(0.8712 0 0 1 227.835 781.0208)" className="st0 st5 st7">3</text>
+
+                <rect width="215" height="75" x="75" y="738" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+
               </g>
             </g>
             <g>
@@ -381,6 +379,9 @@ var LabGrid = React.createClass({
               <g>
                 <polygon className="st0" points="289.2,981.9 76.8,982.3 76.1,914.4 288.4,913    "/>
                 <text transform="matrix(0.8712 0 0 1 119.3291 954.1517)" className="non-stroke st19 st7">数据处理实验室</text>
+
+                <rect width="215" height="75" x="75" y="912" className='room' style={{fill: 'rgba(255, 0, 0, .2)'}}></rect>
+
               </g>
             </g>
 

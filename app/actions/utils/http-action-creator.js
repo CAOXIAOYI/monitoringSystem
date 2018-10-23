@@ -40,7 +40,7 @@ module.exports = (ns) => (name, processors = processorMap) => {
       //使用原生的promise放弃ajax的拓展promise
       return new Promise(function(resolve,reject){
         ajax.request(method, u, param, function(error, data) {
-          console.log("thisError=",error);
+          // console.log("thisError=",error);
           if (error) {
             if (error.code === "NOT_LOGIN") {
               Modal.error({
