@@ -148,19 +148,19 @@ const RealLine = React.createClass({
         type: 'line',
         data: _echartData.data[index],
         symbol:null,
-        markPoint: {
-          data: [
-            { type: 'max', name: '最大值' },
-            { type: 'min', name: '最小值' }
-          ],
-          itemStyle: {
-            normal: {
-              label: {
-                textStyle: { color: '#fff' }
-              }
-            }
-          }
-        }
+        // markPoint: {
+        //   data: [
+        //     { type: 'max', name: '最大值' },
+        //     { type: 'min', name: '最小值' }
+        //   ],
+        //   itemStyle: {
+        //     normal: {
+        //       label: {
+        //         textStyle: { color: '#fff' }
+        //       }
+        //     }
+        //   }
+        // }
       };
     });
     _.set(_newState, "series", _data);

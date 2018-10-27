@@ -334,6 +334,12 @@ module.exports = {
     method: "GET",
     url: URLResolve("/dfh/rt/deviceFeaturesData/#meterId",true)
   },
+  //右侧THD数据
+  deviceTHDData: {
+    method: "POST",
+    url: URLResolve("/dfh/thd/getSpecifyHarmonic/#meterId",true)
+  },
+
   /**设备特性 end**/
 
 

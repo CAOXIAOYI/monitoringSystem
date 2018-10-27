@@ -23,12 +23,12 @@ module.exports = [{
     type:"deviceType"
   },{
     id: 5,
-    name: "科考设备",
+    name: "科考实验室",
     value: 5,
     type:"deviceType"
   },{
     id: 6,
-    name: "实验室与UPS",
+    name: "实验室UPS",
     value: 6,
     type:"deviceType"
   }]

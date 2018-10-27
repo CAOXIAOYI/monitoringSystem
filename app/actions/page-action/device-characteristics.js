@@ -34,3 +34,12 @@ exports.deviceFeaturesData = function(param, pathParams) {
     });
   }
 };
+
+//右侧THD
+exports.deviceTHDData = function(param, pathParams) {
+  return (dispatch) => {
+    return dispatch(deviceCharacteristics.deviceTHDData(param, pathParams)).catch((err) => {
+      console.log(err);
+    });
+  }
+};

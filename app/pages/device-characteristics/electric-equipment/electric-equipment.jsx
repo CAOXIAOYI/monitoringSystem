@@ -39,35 +39,26 @@ let ElectricEquipment = React.createClass({
         <div className="electric-equipment-container">
           <h2>设备相关参数:</h2>
           <Row className="device-param">
-             <Col span={6}>
-                功率(kW)
-             </Col>
              <Col span={6} >
                 功率因数
-             </Col>
-             <Col span={6}>
-                THD(%)
-             </Col>
-             <Col span={6}>
-                启动电流(A)
-             </Col>
-          </Row>
-          <Row className="device-param">
-             <Col span={6}>
-               {deviceCharacteristicsData.power || 0}
              </Col>
              <Col span={6} >
                {deviceCharacteristicsData.powerFactor || 0}
              </Col>
-             <Col span={6}>
-               {deviceCharacteristicsData.thd || 0}
-             </Col>
-             <Col span={6}>
-                {deviceCharacteristicsData.current || 0}
-             </Col>
           </Row>
           <div className="electric-echarts">
-            <Line data = {currentEchartData}/>
+            <div className='content-left'>
+              <div className='row-top'>
+                <Line data={currentEchartData}/>
+              </div>
+              <div className='row-bottom'>
+                <Line data={currentEchartData}/>
+              </div>
+              
+            </div>
+            <div className='content-right'>
+              <Line data={currentEchartData}/>
+            </div>
           </div>
         </div>
       </div>

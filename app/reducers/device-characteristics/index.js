@@ -20,14 +20,26 @@ module.exports = function(state = initState, action) {
 
        newState.menus = _.assign(newState.menus, action.data);
       return newState;
+
      case actions.async.deviceFeaturesData.success:
-      
       newState.currentMeterId = action.pathParams.meterId+"";
       newState.deviceDatas[action.pathParams.meterId] = action.data;
       return newState;
     case actions.async.deviceFeaturesData.fail:
       newState.currentMeterId = action.pathParams.meterId+"";
       return newState;
+
+    case actions.async.deviceTHDData.success:
+      newState.currentMeterId = action.pathParams.meterId+"";
+      newState.deviceTHDDatas[action.pathParams.meterId] = action.data;
+      return newState;
+    case actions.async.deviceTHDData.fail:
+      newState.currentMeterId = action.pathParams.meterId+"";
+      return newState;
+
+
+
+
     default:
       return newState;
   }

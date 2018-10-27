@@ -14,8 +14,8 @@ exports.request = function request(method, url, data, callback) {
   }
   function httpRequest(method, url, params, callback) {
     var setting = {
-      url: UrlPoxy + url,
-      // url: url,
+      // url: UrlPoxy + url,
+      url: url,
       data: params,
       type: method,
       dataType: 'json',

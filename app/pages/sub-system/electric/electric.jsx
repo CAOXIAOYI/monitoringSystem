@@ -28,15 +28,23 @@ let Electric = React.createClass({
     }
   },
   componentDidMount() {
+    this.setState({
+      tickId:0
+    });
     this.timer = setInterval(() => this.tick(), 3000);
   },
   componentWillUnmount(){
     this.timer && clearInterval(this.timer);
   },
   tick() {
+    let tickId = this.state.tickId+1;
     // 每30s执行一次
+    this.setState({
+      tickId:tickId
+    },()=>{
+      this.props.subSystemMonitor({},{deviceType:this.props.subSystemMeta.currentDeviceType});  
+    });
     
-    this.props.subSystemMonitor({},{deviceType:this.props.subSystemMeta.currentDeviceType});
   },
   _genDom(_monitorDatas,currentDeviceType){
       if(!_monitorDatas || !currentDeviceType){
@@ -65,20 +73,21 @@ let Electric = React.createClass({
      });
     return {header:header1,body:body1};
   },
+
   leftDom(currentDeviceType,dynamoData){
       switch (currentDeviceType) {
         case 1:
-          return <DynamoComs data={dynamoData}/>;
+          return <DynamoComs data={dynamoData} id={this.state.tickId}/>;
         case 2:
-          return <PropulsionComs data={dynamoData}/>;
+          return <PropulsionComs data={dynamoData} id={this.state.tickId}/>;
         case 3:
-          return <OperationComs data={dynamoData}/>;
+          return <OperationComs data={dynamoData} id={this.state.tickId}/>;
         case 4:
-          return <TransformerComs data={dynamoData}/>;
+          return <TransformerComs data={dynamoData} id={this.state.tickId}/>;
         case 5:
-          return <ScientificComs data={dynamoData}/>;
+          return <ScientificComs data={dynamoData} id={this.state.tickId}/>;
         case 6:
-          return <LaboratoryComs data={dynamoData}/>;
+          return <LaboratoryComs data={dynamoData} id={this.state.tickId}/>;
       }
   },
   stretchIconClick() {

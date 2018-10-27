@@ -143,7 +143,7 @@ let Electric = React.createClass({
         
       }
     }
-    
+    console.log(realEchartDataU)
     return (
       <div className="page-power-quality">
         <div className="electric-equipment-container">

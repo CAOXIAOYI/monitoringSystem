@@ -39,12 +39,12 @@ function genConfig(slidebarMeta) {
       id:4
     },{
       key: "laboratory",
-      name: "科考设备",
+      name: "科考实验室",
       icon: <i className="iconfont">&#xe61a;</i>,
       id:5
     },{
       key: "UPS",
-      name: "实验室与UPS",
+      name: "实验室UPS",
       icon: <i className="iconfont">&#xe61a;</i>,
       id:6
     }]
