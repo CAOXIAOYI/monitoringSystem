@@ -26,6 +26,7 @@ var AppPages = React.createClass({
    onClick(item){
    var date = new Date();
    let startTime = moment(date).format("YYYY-MM-DD")+" 00:00:00";
+   startTime = '1999-11-11 00:00:00'
    let endTime = moment(date).format("YYYY-MM-DD HH:mm:ss");
    if(item.type === 1){
     this.props.historyData({},{meterId:item.meterId,start:startTime,end:endTime});

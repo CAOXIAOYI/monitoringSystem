@@ -193,14 +193,17 @@ class Transformer extends BaseCom {
                 <th>设备</th>
                 <th>当前状态</th>
               </tr>
-              <tr className='row'>
-                <td>1号配电变压器</td>
-                <td></td>
-              </tr>
-              <tr className='row'>
-                <td>2号配电变压器</td>
-                <td></td>
-              </tr>
+              {
+                this.props.tableData && this.props.tableData.map((item,idx)=>{
+                  return (
+                    <tr className='row' key={idx}>
+                      <td>{item.name}</td>
+                      <td>{item.status}</td>
+                    </tr>
+                  )
+                })
+              }
+              
             </tbody>
           </table>
         </div>

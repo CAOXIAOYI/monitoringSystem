@@ -7,7 +7,8 @@ var Adaptor = require("./adaptor.js");
 var initState = {
   result:[],
   homeDatas:{},
-  latestEvents:[]
+  latestEvents:[],
+  alertData:[]
 };
 
 module.exports = function(state = initState, action) {
@@ -21,6 +22,10 @@ module.exports = function(state = initState, action) {
       return newState;
     case actions.async.latestEvent.success:
       newState.latestEvents = action.data;
+      return newState;
+
+    case actions.async.alertData.success:
+      newState.alertData = action.data;
       return newState;
       
     default:

@@ -34,7 +34,6 @@ module.exports = function(state = initState, action) {
       
       return newState;
     case actions.async.delDeviceParameters.success:
-      debugger;
       let resultIndex = newState.result.indexOf(action.pathParams.deviceId);
         newState.result.splice(resultIndex, 1);
         delete newState.dynamoDatas[action.pathParams.deviceId];

@@ -1,10 +1,9 @@
 "use strict";
 
 var URLResolve = require("./resolve");
+var uid = window.localStorage.getItem('uid');
 
 module.exports = {
-  
-  
 
   GetCanvasInfo: {
     method: "GET",
@@ -301,6 +300,10 @@ module.exports = {
     method: "GET",
     url: URLResolve("/dfh/rt/homePageData/#grid",true)
   },
+  alertData: {
+    method: "GET",
+    url: URLResolve("/dfh/history/latestWaringEvent",true)
+  },
    /**首页 end**/
   /**子系统监控 start**/
   //参数说明：1：发电机；2：推进电机；3：科考设备；4：配电变压器；5：实验室；6：UPS
@@ -308,6 +311,11 @@ module.exports = {
     method: "GET",
     url: URLResolve("/dfh/rt/subSystemMonitor/#deviceType",true),
   },
+  subSystemMonitorExtend: {
+    method: "GET",
+    url: URLResolve("/dfh/rt/subSystemMonitor/extend/#deviceType",true),
+  },
+  // http://dfh.jokco.com/dfh/rt/subSystemMonitor/extend/
   /**子系统监控 end**/
   /**电能质量 start**/
   //左侧菜单
@@ -333,11 +341,6 @@ module.exports = {
   deviceFeaturesData: {
     method: "GET",
     url: URLResolve("/dfh/rt/deviceFeaturesData/#meterId",true)
-  },
-  //右侧THD数据
-  deviceTHDData: {
-    method: "POST",
-    url: URLResolve("/dfh/thd/getSpecifyHarmonic/#meterId",true)
   },
 
   /**设备特性 end**/

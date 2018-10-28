@@ -39,6 +39,9 @@ class PonitorStatus extends BaseCom {
           "circle-off": item.exitStatus == 1,
           "circle-on": item.exitStatus == 0
         })
+      if(item.meterId == -100){
+        return
+      }
       return (
         <Row className="electric-status" key={index}>
            <Col span={24}>
@@ -66,6 +69,7 @@ class PonitorStatus extends BaseCom {
     let monPoint29 = {};
     let monPoint30 = {};
     let monPoint31 = {};
+    let monPoint32 = {};
     this.props.monitorStatusMeta.monitorDatas.map((item, index) => {
       if(item.meterId === 16){monPoint16 = item;}
       if(item.meterId === 17){monPoint17 = item;}
@@ -83,6 +87,9 @@ class PonitorStatus extends BaseCom {
       if(item.meterId === 29){monPoint29 = item;}
       if(item.meterId === 30){monPoint30 = item;}
       if(item.meterId === 31){monPoint31 = item;}
+
+      //交换机
+      if(item.meterId === -100){monPoint32 = item;}
     });
 
     return (
@@ -136,6 +143,10 @@ class PonitorStatus extends BaseCom {
            </div>
            <div className="monitor-div monitor-sixteen">
               <div>{monPoint22.dataFlow?monPoint22.dataFlow:0} KB/s</div>
+           </div>
+
+           <div className="monitor-div monitor-seventeen">
+              <div className={monPoint32.exitStatus?'circle circle-off':'circle circle-on'}></div>
            </div>
 
          </div>

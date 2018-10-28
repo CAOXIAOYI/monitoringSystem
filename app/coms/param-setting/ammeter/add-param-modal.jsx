@@ -28,6 +28,8 @@ class AddParamModal extends BaseCom {
         "smtp_server":"202.108.5.83",
         "meter_address":"",
         "meter_id":"",
+        "meter_f0":10
+
       },
       dataStatus: {
         ip: {
@@ -212,6 +214,19 @@ class AddParamModal extends BaseCom {
                 >
                 <Input type="text" value={meta.acceptor_email} name="acceptor_email" placeholder="请输入接受者邮箱" onChange={this.onInputChange.bind(this)}/>
               </FormItem>
+            </Col>
+        </Row>
+        <Row>
+            <Col sm={12}>
+                <FormItem
+                  {...formItemLayout}
+                  label="F0"
+                  >
+                  <InputNumber value={meta.meter_f0} name="meter_f0" onChange={this.onNumberChange.bind(this,"meter_f0")} />
+                  <Tooltip placement="right" title='该项必须为正整数'>
+                   <i className="iconfont tootip-icon">&#xe608;</i>
+                  </Tooltip>
+                </FormItem>
             </Col>
         </Row>
       </Form>

@@ -76,12 +76,14 @@ class Header extends baseCom {
   
     window.localStorage.setItem("name","");
     window.localStorage.setItem("privilege","");
+    window.localStorage.setItem("privilegeLevel",'');
+    window.localStorage.setItem("uid",'');
     const path = '/monitoringSystem/login';
     browserHistory.push(path);
     //window.location.reload();
   }
   componentDidMount() {
-    this.timer = setInterval(() => this.tick(), 3000);
+    // this.timer = setInterval(() => this.tick(), 3000);
   }
   componentWillUnmount(){
 

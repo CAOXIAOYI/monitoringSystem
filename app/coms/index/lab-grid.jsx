@@ -12,7 +12,7 @@ var LabGrid = React.createClass({
     this.svg = "";
     this.zoomgroup = "";
     this.trans = [0, 0];
-    this.scale = 1;
+    this.scale = .8;
     return {
 
     };

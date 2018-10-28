@@ -54,24 +54,64 @@ class Index extends BaseCom {
   tick() {
     // 每30s执行一次
     this.props.homePageData();
+    this.props.alertData();
   }
+
+  renderAlert(list){
+    if(list.length == 0){
+      return (
+        <div className='none-data'>
+          暂无数据
+        </div>
+      )
+    }else{
+      return list.map((item,idx)=>{
+        return (
+          <div className="event-body" key={idx}>
+            <div className="div-even">{item.time_stamp}</div>
+            <div className="div-even">{item.event}</div>
+            <div className="div-even">{item.device_room}</div>
+          </div>
+        )
+        
+      })
+
+    }
+
+   
+  }
+
   render() {
     let props = this.props;
     let appMeta = props.appMeta;
+
     let selectedClass = classnames({
       "selected": true,
     })
     return (
       <div className="page-index">
-        {this.state.powerGrid ? <PowerGrid data={appMeta} /> : <LabGrid data={appMeta} />}
-        <div className="index-chageBtn">
-          <div className={this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"power")}>
-            <span>动力电网</span>
-          </div>
-          <div className={!!!this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"lab")}>
-            <span>实验室电网</span>
+        <div className='page-left'>
+          {this.state.powerGrid ? <PowerGrid data={appMeta} /> : <LabGrid data={appMeta} />}
+          <div className="index-chageBtn">
+            <div className={this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"power")}>
+              <span>动力电网</span>
+            </div>
+            <div className={!!!this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"lab")}>
+              <span>实验室电网</span>
+            </div>
           </div>
         </div>
+        <div className='page-right'>
+          <div className="event-header">
+            <div>时间</div>
+            <div>名称</div>
+            <div>描述</div>
+          </div>
+          <div className='scroll-body'>
+            {this.renderAlert(appMeta.alertData)}
+          </div>
+        </div>
+        
       </div>
       
     );
@@ -88,4 +128,5 @@ function mapStateToProps(state, ownProps) {
 module.exports = connect(mapStateToProps, {
   //page-action
    homePageData: appAction.homePageData,
+   alertData:appAction.alertData
 })(Index);

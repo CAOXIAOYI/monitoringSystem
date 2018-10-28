@@ -12,7 +12,7 @@ var PowerGrid = React.createClass({
     this.svg = "";
     this.zoomgroup = "";
     this.trans = [0, 0];
-    this.scale = 1;
+    this.scale = .8;
     return {
     };
   },
@@ -37,7 +37,7 @@ var PowerGrid = React.createClass({
     this.zoomgroup = d3.select("#path_1_g");
     this.svg.on("dblclick.zoom", null)
         .call(d3.behavior.zoom().on("zoom", this._rescale));
-    this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
+    // this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
 
 

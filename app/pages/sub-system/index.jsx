@@ -14,6 +14,7 @@ var AppPages = React.createClass({
     if(type){
       const menu = subSystemGen().menu;
       this.props.subSystemMonitor({},{deviceType:Number(type)});
+      this.props.subSystemMonitorExtend({},{deviceType:Number(type)});
       key = menu[Number(type) - 1].key;
     }
 
@@ -37,6 +38,7 @@ var AppPages = React.createClass({
   },
   onClick(item){
    this.props.subSystemMonitor({},{deviceType:item.id});
+   this.props.subSystemMonitorExtend({},{deviceType:item.id});
     this.setState({
       selectKey:[item.key]
     });
@@ -83,5 +85,6 @@ function mapStateToProps(state, ownProp) {
 module.exports = connect(
   mapStateToProps, {
      subSystemMonitor: subSystemAction.subSystemMonitor,
+     subSystemMonitorExtend: subSystemAction.subSystemMonitorExtend,
   }
 )(AppPages);

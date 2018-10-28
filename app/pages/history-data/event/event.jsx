@@ -23,6 +23,7 @@ let Electric = React.createClass({
   },
 
   historyEventData(item){
+    console.log(item)
     this.props.historyEventData({},{eventId:item.id});
     this.setState({
       isStretchIcon: false,
@@ -81,7 +82,11 @@ let Electric = React.createClass({
     let selectedClass = classnames({
       "selected": true,
     })
+    
+
     let _eventList = this.props.historyDataMeta.historyEvent || [];
+
+    
     let eventListDom = _eventList.map((item,index)=>{
       if(index%2 === 0){
         return (

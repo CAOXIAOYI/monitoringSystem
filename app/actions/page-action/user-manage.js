@@ -4,8 +4,9 @@ import { userManage } from "../store-action";
 
 
 exports.onEnter = function(dispatch,nextState,pp) {
+  var uid = window.localStorage.getItem('uid');
   return () => {
-    dispatch(userManage.selectUsers());
+    dispatch(userManage.selectUsers({uid:parseFloat(uid)}));
   };
 };
 

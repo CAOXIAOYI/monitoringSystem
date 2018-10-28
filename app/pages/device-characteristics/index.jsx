@@ -25,11 +25,6 @@ var AppPages = React.createClass({
   },
    onClick(item){
     this.props.deviceFeaturesData({},{meterId:item.meterId});
-    this.props.deviceTHDData({
-      meterId:item.meterId,
-      thdNum:-1,
-      timeStamp:''
-    },{meterId:item.meterId});
   },
   render: function() {
     return (
@@ -72,6 +67,5 @@ function mapStateToProps(state, ownProp) {
 module.exports = connect(
   mapStateToProps, {
     deviceFeaturesData: deviceCharacteristicsAction.deviceFeaturesData,
-    deviceTHDData: deviceCharacteristicsAction.deviceTHDData,
   }
 )(AppPages);

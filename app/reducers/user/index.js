@@ -20,7 +20,6 @@ module.exports = function(state = initState, action) {
     case actions.async.login.success:
       //newState.isFetching = false;
       return newState;
-
     default:
       return newState;
   }

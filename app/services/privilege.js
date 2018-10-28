@@ -8,7 +8,7 @@ privilege.prototype.isPrivilege = function(privilege,index) {
 
    let binary = this.fullPrivilege(privilege);
    return binary.substring(index,index+1) === "1";
-}
+}       
 
 
 privilege.prototype.binaryToDecimalism = function(binary) {
@@ -27,7 +27,6 @@ privilege.prototype.setPrivilege = function(privilege,index) {
   }else{
     _newStr = this.replaceChat(binary,index,"1");
   }
-  console.log("_newStr",_newStr);
   return this.binaryToDecimalism(_newStr);
 };
 
@@ -42,6 +41,7 @@ privilege.prototype.replaceChat = function(source,pos,newChar){
      return sRet;  
 }
 privilege.prototype.fullPrivilege = function(privilege){  
+
      let binary = privilege.toString(2);
      if(binary.length<11){
       let zero="";

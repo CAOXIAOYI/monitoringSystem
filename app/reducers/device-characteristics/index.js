@@ -29,17 +29,6 @@ module.exports = function(state = initState, action) {
       newState.currentMeterId = action.pathParams.meterId+"";
       return newState;
 
-    case actions.async.deviceTHDData.success:
-      newState.currentMeterId = action.pathParams.meterId+"";
-      newState.deviceTHDDatas[action.pathParams.meterId] = action.data;
-      return newState;
-    case actions.async.deviceTHDData.fail:
-      newState.currentMeterId = action.pathParams.meterId+"";
-      return newState;
-
-
-
-
     default:
       return newState;
   }

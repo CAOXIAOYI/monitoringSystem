@@ -16,11 +16,11 @@ class Dynamo extends BaseCom {
     super(props);
     this.state = {
       selected: '',
-      lastLineData:[[],[],[],[]]
+      lastLineData:[[],[],[],[],[],[],[],[],[],[]]
     };
 
     this.indata = {
-      lastLineData:[[],[],[],[]],
+      lastLineData:[[],[],[],[],[],[],[],[],[],[],[],[]],
     }
 
     // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -127,8 +127,16 @@ class Dynamo extends BaseCom {
     let monPoint2 = {};
     let monPoint3 = {};
     let monPoint4 = {};
+
+    let eleStr = [];
     if(this.props.data){
       this.props.data.map((item, index) => {
+
+        if(parseFloat(item.i) >= 0.1 ){
+          eleStr.push(item.deviceName);
+        }
+
+
         if(item.meterId === 1){
           monPoint1 = item;
         }
@@ -143,6 +151,10 @@ class Dynamo extends BaseCom {
         }
       });
     }
+
+
+
+
     return (
       <div className="dynamo-page">
         {this.renderEcharts()}
@@ -237,8 +249,8 @@ class Dynamo extends BaseCom {
                 <th>运行发电机</th>
               </tr>
               <tr className='row'>
-                <td>匹配</td>
-                <td>1号发电机，1号发电机，1号发电机</td>
+                <td>{this.props.tableData[0].match || ''}</td>
+                <td>{eleStr.join('，')}</td>
               </tr>
             </tbody>
           </table>

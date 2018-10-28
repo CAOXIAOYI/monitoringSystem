@@ -40,6 +40,7 @@ let ElectricEquipment = React.createClass({
     {title: '接收者邮箱地址',dataIndex: 'acceptor_email',key: 'acceptor_email',width:100},
     {title: 'SMTP服务器端口',dataIndex: 'smtp_port',key: 'smtp_port',width:110},
     {title: 'SMTP服务器地址',dataIndex: 'smtp_server',key: 'smtp_server',width:120},
+    {title: 'F0',dataIndex: 'meter_f0',key: 'meter_f0',width:40},
     {title: '操作',key: 'operation',width:100,fixed:"right",
       render: (text, record) => (
         <span>

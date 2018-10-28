@@ -5,6 +5,7 @@ module.exports = {
   ],
   async: [
     "homePageData",
+    "alertData",
     "systemTime",
     "latestEvent"
   ]

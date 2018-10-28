@@ -3,13 +3,14 @@
 var _ = require('lodash');
 var actions = require('../../actions/store-action/').userManage.actions;
 var Adaptor = require("./adaptor.js");
+
 var initState = {
   result: [],
   users: {},
   page: 1,
   num: 0,
   pageSize: 10,
-  loginHistory:[]
+  loginHistory:[],
 };
 
 // "login",
@@ -35,7 +36,7 @@ module.exports = function(state = initState, action) {
         users: _.assign({}, newState.users, _usersData.users),
         num:_usersData.num,
         page:action.params.page,
-        pageSize:action.params.pageSize,
+        pageSize:action.params.pageSize
       });
       return newState;
     case actions.async.addUser.success:

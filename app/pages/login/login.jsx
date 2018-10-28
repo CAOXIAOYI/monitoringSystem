@@ -39,6 +39,8 @@ class NormalLoginForm extends React.Component{
            if(userData.data.login){
             window.localStorage.setItem("name",values.name);
             window.localStorage.setItem("privilege",userData.data.privilege);
+            window.localStorage.setItem("privilegeLevel",userData.data.privilege_level);
+            window.localStorage.setItem("uid",userData.data.uid);
             const path = '/monitoringSystem/pages/index';
             browserHistory.push(path);
            }else{

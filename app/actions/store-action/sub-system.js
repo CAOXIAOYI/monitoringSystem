@@ -4,6 +4,7 @@ module.exports = {
   sync:[
   ],
   async: [
-    "subSystemMonitor"
+    "subSystemMonitor",
+    "subSystemMonitorExtend"
   ]
 }

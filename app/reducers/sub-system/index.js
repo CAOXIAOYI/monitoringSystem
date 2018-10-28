@@ -21,6 +21,15 @@ module.exports = function(state = initState, action) {
         newState.currentDeviceType = action.pathParams.deviceType;
       }
       return newState;
+      
+    case actions.async.subSystemMonitorExtend.success:
+      
+      if(action.pathParams.deviceType){
+        newState.monitorDatas['tableData'] = action.data;
+        newState.currentDeviceType = action.pathParams.deviceType;
+      }
+      return newState;
+
     default:
       return newState;
   }

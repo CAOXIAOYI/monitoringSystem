@@ -43,6 +43,7 @@ let Electric = React.createClass({
       tickId:tickId
     },()=>{
       this.props.subSystemMonitor({},{deviceType:this.props.subSystemMeta.currentDeviceType});  
+      this.props.subSystemMonitorExtend({},{deviceType:this.props.subSystemMeta.currentDeviceType});  
     });
     
   },
@@ -74,20 +75,20 @@ let Electric = React.createClass({
     return {header:header1,body:body1};
   },
 
-  leftDom(currentDeviceType,dynamoData){
+  leftDom(currentDeviceType,dynamoData,tableData){
       switch (currentDeviceType) {
         case 1:
-          return <DynamoComs data={dynamoData} id={this.state.tickId}/>;
+          return <DynamoComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
         case 2:
-          return <PropulsionComs data={dynamoData} id={this.state.tickId}/>;
+          return <PropulsionComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
         case 3:
-          return <OperationComs data={dynamoData} id={this.state.tickId}/>;
+          return <OperationComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
         case 4:
-          return <TransformerComs data={dynamoData} id={this.state.tickId}/>;
+          return <TransformerComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
         case 5:
-          return <ScientificComs data={dynamoData} id={this.state.tickId}/>;
+          return <ScientificComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
         case 6:
-          return <LaboratoryComs data={dynamoData} id={this.state.tickId}/>;
+          return <LaboratoryComs data={dynamoData} id={this.state.tickId} tableData={tableData}/>;
       }
   },
   stretchIconClick() {
@@ -100,16 +101,19 @@ let Electric = React.createClass({
    var currentDeviceType = this.props.subSystemMeta.currentDeviceType;
 
    var monitorDatas = this.props.subSystemMeta.monitorDatas;
+   console.log(this.props.subSystemMeta)
    //let _monitorDatas = [];
    let _header = "";
    let _body = "";
    let _dynamo = {};
+   let tableData = '';
    let leftDom = "";
    if(currentDeviceType && monitorDatas){
     _header = this._genDom(monitorDatas,currentDeviceType).header;
     _body = this._genDom(monitorDatas,currentDeviceType).body
     _dynamo = monitorDatas[currentDeviceType];
-    leftDom = this.leftDom(currentDeviceType,_dynamo);
+    tableData = monitorDatas.tableData;
+    leftDom = this.leftDom(currentDeviceType,_dynamo,tableData);
    }
    let stretchIcon = <i className="iconfont">&#xe60e;</i>
    if (this.state.isStretchIcon) {
@@ -127,7 +131,7 @@ let Electric = React.createClass({
       "electric-right": true,
       "electric-right-stretch": this.state.isStretchIcon
     })
-  return (
+    return (
       <div className="page-sub-system">
         <div className="electric-equipment-container">
           <div className={stretchLeftClass}>
@@ -164,4 +168,5 @@ function mapStateToProps(state, ownProps) {
 module.exports = connect(mapStateToProps, {
   //page-action
    subSystemMonitor: subSystemAction.subSystemMonitor,
+   subSystemMonitorExtend: subSystemAction.subSystemMonitorExtend
 })(Electric);

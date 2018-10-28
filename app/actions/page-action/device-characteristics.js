@@ -13,6 +13,14 @@ exports.onEnter = function(dispatch) {
           dispatch(deviceCharacteristics.deviceFeaturesData({},{meterId:data.data[0].meterId})).catch((err) => {
             console.log(err);
           });
+
+          dispatch(deviceCharacteristics.deviceTHDData({
+            meterId:data.data[0].meterId,
+            thdNum:-1,
+            timeStamp:''
+          }, {meterId:data.data[0].meterId})).catch((err) => {
+            console.log(err);
+          });
         }
       })
     .catch((err) => {

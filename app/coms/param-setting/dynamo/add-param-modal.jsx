@@ -35,6 +35,8 @@ class AddParamModal extends BaseCom {
         "lxdlUpperUpperLimit": "",
         "fxdlUpperLimit": "",
         "fxdlUpperUpperLimit": "",
+        "ffwdPowerRatio": 0.75,
+        "mediumSpeedPowerRatio": 0.5,
       },
       dataStatus: {
         ip: {
@@ -357,6 +359,32 @@ class AddParamModal extends BaseCom {
                   <i className="iconfont tootip-icon">&#xe608;</i>
                 </Tooltip>
             </FormItem>
+            </Col>
+        </Row>
+        <Row>
+            <Col sm={12}>
+              <FormItem
+                {...formItemLayout}
+                label="快速推进功率占比"
+                >
+                <InputNumber value={meta.ffwdPowerRatio }  min={0} max={1}  name="ffwdPowerRatio" onChange={this.onNumberChange.bind(this,"ffwdPowerRatio")} />
+                <Tooltip placement="right" title='该项必须为数字类型,最小值为0,最大值为1'>
+                  <i className="iconfont tootip-icon">&#xe608;</i>
+                </Tooltip>
+      
+              </FormItem>
+            </Col>
+            <Col sm={12}>
+              <FormItem
+                {...formItemLayout}
+                label="中速推进功率占比"
+                >
+                <InputNumber value={meta.mediumSpeedPowerRatio }  min={0} max={1}  name="mediumSpeedPowerRatio" onChange={this.onNumberChange.bind(this,"mediumSpeedPowerRatio ")} />
+                <Tooltip placement="right" title='该项必须为数字类型,最小值为0,最大值为1'>
+                  <i className="iconfont tootip-icon">&#xe608;</i>
+                </Tooltip>
+      
+              </FormItem>
             </Col>
         </Row>
         

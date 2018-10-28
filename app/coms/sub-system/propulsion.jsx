@@ -42,8 +42,8 @@ class Propulsion extends BaseCom {
     (this.props.data || []).forEach((item,idx)=>{
        
       if(this.updateFlag){
-        lastLineData[idx].push(Math.random()*100);  
-        // lastLineData[idx].push(item.p);
+        // lastLineData[idx].push(Math.random()*100);  
+        lastLineData[idx].push(item.p);
       }
       
         
@@ -229,22 +229,16 @@ class Propulsion extends BaseCom {
                 <th>设备</th>
                 <th>当前状态</th>
               </tr>
-              <tr className='row'>
-                <td>1号主推进电机</td>
-                <td></td>
-              </tr>
-              <tr className='row'>
-                <td>2号主推进电机</td>
-                <td></td>
-              </tr>
-              <tr className='row'>
-                <td>艏侧推电机</td>
-                <td></td>
-              </tr>
-              <tr className='row'>
-                <td>艏侧推电机</td>
-                <td></td>
-              </tr>
+              {
+                this.props.tableData && this.props.tableData.map((item,idx)=>{
+                  return (
+                    <tr className='row' key={idx}>
+                      <td>{item.name}</td>
+                      <td>{item.status}</td>
+                    </tr>
+                  )
+                })
+              }
             </tbody>
           </table>
         </div>

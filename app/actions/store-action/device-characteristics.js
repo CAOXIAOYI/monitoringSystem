@@ -6,6 +6,5 @@ module.exports = {
   async: [
     "bigPowerLeftMenu",
     "deviceFeaturesData",
-    "deviceTHDData"
   ]
 }

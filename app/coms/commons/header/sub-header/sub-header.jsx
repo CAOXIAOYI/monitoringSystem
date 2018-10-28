@@ -31,6 +31,8 @@ class SubHeader extends baseCom {
   }
   render() {
     let privilege = window.localStorage.getItem("privilege");
+    //1 :普通用户  2：管理员  3：超级用户
+    let privilegeLevel = window.localStorage.getItem("privilegeLevel");
     let subDom = [];
     for(let i=10;i>-1;i--){
        let isisPrivilege = PRIVILEGE.isPrivilege(parseInt(privilege),i);
@@ -69,7 +71,7 @@ class SubHeader extends baseCom {
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 5){
+       if(isisPrivilege && i === 5 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="device_control">
               <NavLink to="/monitoringSystem/pages/device_control"><span>设备接入管控</span></NavLink>
@@ -78,33 +80,34 @@ class SubHeader extends baseCom {
        }
        if(isisPrivilege && i === 4){
           subDom.push( 
-            <Menu.Item key="monitor_status">
-              <NavLink to="/monitoringSystem/pages/monitor_status"><span>监测系统状态</span></NavLink>
-            </Menu.Item>
-          );
-       }
-       if(isisPrivilege && i === 3){
-          subDom.push( 
             <Menu.Item key="electrical_machine">
               <NavLink to="/monitoringSystem/pages/electrical_machine/electric"><span>电机启停特性</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 2){
+       if(isisPrivilege && i === 3 && privilegeLevel !== '1'){
+          subDom.push( 
+            <Menu.Item key="monitor_status">
+              <NavLink to="/monitoringSystem/pages/monitor_status"><span>监测系统状态</span></NavLink>
+            </Menu.Item>
+          );
+       }
+       
+       if(isisPrivilege && i === 2 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="history_data">
               <NavLink to="/monitoringSystem/pages/history_data/electric"><span>历史数据</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 1){
+       if(isisPrivilege && i === 1 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="param_setting">
               <NavLink to="/monitoringSystem/pages/param_setting/dynamo"><span>参数设置页</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 0){
+       if(isisPrivilege && i === 0 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="system_config">
               <NavLink to="/monitoringSystem/pages/system_config/user_manage"><span>系统设置</span></NavLink>

@@ -91,7 +91,9 @@ let Electric = React.createClass({
       powerQualityData = this.props.powerQualityMeta.powerDatas[this.props.powerQualityMeta.currentMeterId];
       realEchartDataU.meterId = this.props.powerQualityMeta.currentMeterId;
       realEchartDataL.meterId = this.props.powerQualityMeta.currentMeterId;
+      var k = 0;
       for(var key in powerQualityData){
+        k++;
         if(key === "uaList"){
           realEchartDataU.data[0] = powerQualityData[key] || noneData;
         }
@@ -143,7 +145,6 @@ let Electric = React.createClass({
         
       }
     }
-    console.log(realEchartDataU)
     return (
       <div className="page-power-quality">
         <div className="electric-equipment-container">
