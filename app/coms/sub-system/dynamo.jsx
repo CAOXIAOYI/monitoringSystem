@@ -129,6 +129,7 @@ class Dynamo extends BaseCom {
     let monPoint4 = {};
 
     let eleStr = [];
+    const tableData = this.props.tableData || [{}];
     if(this.props.data){
       this.props.data.map((item, index) => {
 
@@ -249,7 +250,7 @@ class Dynamo extends BaseCom {
                 <th>运行发电机</th>
               </tr>
               <tr className='row'>
-                <td>{this.props.tableData[0].match || ''}</td>
+                <td>{tableData.match || ''}</td>
                 <td>{eleStr.join('，')}</td>
               </tr>
             </tbody>

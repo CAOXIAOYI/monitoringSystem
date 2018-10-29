@@ -23,7 +23,17 @@
       .st9{font-family:'STKaiti';fill:#FFFFFF;}
       .st10{font-size:18px;}
       .st11{font-size:12px;}
-      .st12{enable-background:new;}
+      .st12{
+        enable-background:new;
+        .tspan_i,.tspan_q{
+          display: none
+        }
+        &.show{
+          .tspan_i,.tspan_q{
+            display: block
+          }
+        }
+      }
       .st13{font-family:'STLibian-SC-Regular';fill:#FFFFFF;}
       .switch-on{fill:url(#switch-on);}
       .switch-on{fill:url(#switch-on);}

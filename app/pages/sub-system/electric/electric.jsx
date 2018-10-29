@@ -101,7 +101,6 @@ let Electric = React.createClass({
    var currentDeviceType = this.props.subSystemMeta.currentDeviceType;
 
    var monitorDatas = this.props.subSystemMeta.monitorDatas;
-   console.log(this.props.subSystemMeta)
    //let _monitorDatas = [];
    let _header = "";
    let _body = "";

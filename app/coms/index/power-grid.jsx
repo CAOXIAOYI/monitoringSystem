@@ -39,32 +39,44 @@ var PowerGrid = React.createClass({
         .call(d3.behavior.zoom().on("zoom", this._rescale));
     // this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
-
-
-
-
     //跳转至"子系统监测"页面
-    this.goSubSystem('.ele-1',1);
-    this.goSubSystem('.ele-2',2);
-    this.goSubSystem('.ele-3',3);
-    this.goSubSystem('.ele-4',4);
+    this.goSubSystem('#ele1_1',1);
+    this.goSubSystem('#ele1_2',1);
+    this.goSubSystem('#ele1_3',1);
+    this.goSubSystem('#ele1_4',1);
+
+    this.goSubSystem('#ele2_1',2);
+    this.goSubSystem('#ele2_2',2);
+    this.goSubSystem('#ele2_3',2);
+    this.goSubSystem('#ele2_4',2);
+
+    this.goSubSystem('#ele3_1',3);
+    this.goSubSystem('#ele3_2',3);
+    this.goSubSystem('#ele3_3',3);
+    this.goSubSystem('#ele3_4',3);
+    this.goSubSystem('#ele3_5',3);
+    this.goSubSystem('#ele3_6',3);
+
+
+    this.goSubSystem('#ele4_1',4);
+    this.goSubSystem('#ele4_2',4);
+    
 
   },
 
   goSubSystem(select,id){
     const self = this;
+    d3.select(select).on('mousedown',null);
+    d3.select(select).on('mouseup',null);
     d3.select(select).on('mousedown',function(e){
-
       self.mouseDownX = d3.event.x;
       self.mouseDownY = d3.event.y;
-      
     })
 
     d3.select(select).on('mouseup',function(){
       const mouseUpX = d3.event.x;
       const mouseUpY = d3.event.y;
       if(Math.abs(mouseUpX - self.mouseDownX) > 10 || Math.abs(mouseUpY - self.mouseDownY) > 10){return }
-
       browserHistory.push('/monitoringSystem/pages/sub_system/electric?type=' + id);  
     })
     
@@ -80,6 +92,20 @@ var PowerGrid = React.createClass({
     this.zoomgroup.attr("cursor", "move");
     this.zoomgroup.attr("transform", "translate(" + trans + ")" + " scale(" + scale + ")");
   },
+
+  onMouseEnter(num){
+    // alert(num + 45)
+    this.setState({
+      showNum:num
+    })
+  },
+
+  mouseLeave(){
+    this.setState({
+      showNum:null
+    })
+  },
+
   render: function () {
     
     let monPoint1 = {};
@@ -714,98 +740,98 @@ var PowerGrid = React.createClass({
               <line id="polyline_2_19_" className="st0" x1="1712.2" y1="540.4" x2="1712.2" y2="578.3"/>
 
               <polygon className='switch-none-v' id="switch-one" points="165.8,442.9 152.5,442.9 152.9,406.5 166.2,406.5 "/>
-              <text transform="matrix(0.8712 0 0 1 168.4 410.5002)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint12.online==1?this.getValue(monPoint12.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint12.online==1?this.getValue(monPoint12.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint12.online==1?this.getValue(monPoint12.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 168.4 410.5002)" className={this.state.showNum == 9 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint12.online==1?this.getValue(monPoint12.i) + 'A' + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint12.online==1?this.getValue(monPoint12.p) + 'kw' + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint12.online==1?this.getValue(monPoint12.q) + 'kVar':"--"}</tspan>
               </text>
 
               <polygon className='switch-none-v' id="switch-two" points="268.5,442.9 255.2,442.9 255.6,406.5 268.9,406.5 "/>
-              <text transform="matrix(0.8712 0 0 1 271.8519 410.5004)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint15.online==1?this.getValue(monPoint15.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint15.online==1?this.getValue(monPoint15.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint15.online==1?this.getValue(monPoint15.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 271.8519 410.5004)" className={this.state.showNum == 10 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint15.online==1?this.getValue(monPoint15.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint15.online==1?this.getValue(monPoint15.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint15.online==1?this.getValue(monPoint15.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-three" points="373.4,442.9 360,442.9 360.4,406.5 373.7,406.5 "/>
-              <text transform="matrix(0.8712 0 0 1 378.4423 410.5004)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint11.online==1?this.getValue(monPoint11.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint11.online==1?this.getValue(monPoint11.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint11.online==1?this.getValue(monPoint11.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 378.4423 410.5004)" className={this.state.showNum == 11 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint11.online==1?this.getValue(monPoint11.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint11.online==1?this.getValue(monPoint11.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint11.online==1?this.getValue(monPoint11.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-four" points="479.9,442.9 466.5,442.9 466.9,406.5 480.3,406.5 "/>
-              <text transform="matrix(0.8712 0 0 1 483.4357 410.5006)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint10.online==1?this.getValue(monPoint10.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint10.online==1?this.getValue(monPoint10.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint10.online==1?this.getValue(monPoint10.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 483.4357 410.5006)" className={this.state.showNum == 5 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint10.online==1?this.getValue(monPoint10.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint10.online==1?this.getValue(monPoint10.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint10.online==1?this.getValue(monPoint10.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-five" points="587.5,442.9 574.3,442.9 574.6,406.5 587.9,406.5 "/>
-              <text transform="matrix(0.8712 0 0 1 591.7244 408.5003)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint9.online==1?this.getValue(monPoint9.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint9.online==1?this.getValue(monPoint9.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint9.online==1?this.getValue(monPoint9.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 591.7244 408.5003)" className={this.state.showNum == 6 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint9.online==1?this.getValue(monPoint9.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint9.online==1?this.getValue(monPoint9.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint9.online==1?this.getValue(monPoint9.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-six" points="667.8,277 654.3,277 654.8,240.6 668.2,240.6 "/>
-              <text transform="matrix(0.8712 0 0 1 670.1498 244.5815)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint2.online==1?this.getValue(monPoint2.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint2.online==1?this.getValue(monPoint2.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint2.online==1?this.getValue(monPoint2.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 670.1498 244.5815)" className={this.state.showNum == 1 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint2.online==1?this.getValue(monPoint2.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint2.online==1?this.getValue(monPoint2.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint2.online==1?this.getValue(monPoint2.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-serven" points="842.8,277 829.4,277 829.8,240.6 843.2,240.6 "/>
-              <text transform="matrix(0.8712 0 0 1 848.1497 244.5813)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint3.online==1?this.getValue(monPoint3.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint3.online==1?this.getValue(monPoint3.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint3.online==1?this.getValue(monPoint3.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 848.1497 244.5813)" className={this.state.showNum == 2 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint3.online==1?this.getValue(monPoint3.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint3.online==1?this.getValue(monPoint3.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint3.online==1?this.getValue(monPoint3.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-eight" points="1400.4,277 1387,277 1387.4,240.6 1400.8,240.6 "/>
-              <text transform="matrix(0.8712 0 0 1 1406.7004 243.5813)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint1.online==1?this.getValue(monPoint1.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint1.online==1?this.getValue(monPoint1.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint1.online==1?this.getValue(monPoint1.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1406.7004 243.5813)" className={this.state.showNum == 4 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint1.online==1?this.getValue(monPoint1.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint1.online==1?this.getValue(monPoint1.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint1.online==1?this.getValue(monPoint1.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-nine" points="1144.8,277 1131.3,277 1131.8,240.6 1145.2,240.6 "/>
-               <text transform="matrix(0.8712 0 0 1 1151.4999 241.6)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint4.online==1?this.getValue(monPoint4.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint4.online==1?this.getValue(monPoint4.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint4.online==1?this.getValue(monPoint4.q):"--"}</tspan>
+               <text transform="matrix(0.8712 0 0 1 1151.4999 241.6)" className={this.state.showNum == 3 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint4.online==1?this.getValue(monPoint4.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint4.online==1?this.getValue(monPoint4.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint4.online==1?this.getValue(monPoint4.q) + 'kVar':"--"}</tspan>
               </text>
               
               <polygon className='switch-none-v' id="switch-ten" points="1189.7,438.9 1176.3,438.9 1176.7,402.5 1190.1,402.5 "/>
-              <text transform="matrix(0.8712 0 0 1 1190.1001 402.4888)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint8.online==1?this.getValue(monPoint8.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint8.online==1?this.getValue(monPoint8.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint8.online==1?this.getValue(monPoint8.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1190.1001 402.4888)" className={this.state.showNum == 7 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint8.online==1?this.getValue(monPoint8.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint8.online==1?this.getValue(monPoint8.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint8.online==1?this.getValue(monPoint8.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-eleven" points="1277.7,438.9 1264.3,438.9 1264.7,402.5 1278.1,402.5 "/>
-              <text transform="matrix(0.8712 0 0 1 1279.1003 401.5812)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint7.online==1?this.getValue(monPoint7.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint7.online==1?this.getValue(monPoint7.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint7.online==1?this.getValue(monPoint7.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1279.1003 401.5812)" className={this.state.showNum == 8 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint7.online==1?this.getValue(monPoint7.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint7.online==1?this.getValue(monPoint7.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint7.online==1?this.getValue(monPoint7.q) + 'kVar':"--"}</tspan>
               </text>
               
               <polygon className='switch-none-v' id="switch-twelve"  points="1554.8,444.1 1541.4,444.1 1541.8,407.7 1555.2,407.7 "/>
-              <text transform="matrix(0.8712 0 0 1 1558.2004 404.5608)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint5.online==1?this.getValue(monPoint5.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint5.online==1?this.getValue(monPoint5.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint5.online==1?this.getValue(monPoint5.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1558.2004 404.5608)" className={this.state.showNum == 13 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint5.online==1?this.getValue(monPoint5.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint5.online==1?this.getValue(monPoint5.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint5.online==1?this.getValue(monPoint5.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-thirteen" points="1368.7,438.9 1355.3,438.9 1355.7,402.5 1369.1,402.5 "/>
-              <text transform="matrix(0.8712 0 0 1 1374.0111 401.5811)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint6.online==1?this.getValue(monPoint6.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint6.online==1?this.getValue(monPoint6.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint6.online==1?this.getValue(monPoint6.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1374.0111 401.5811)" className={this.state.showNum == 12 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint6.online==1?this.getValue(monPoint6.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint6.online==1?this.getValue(monPoint6.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint6.online==1?this.getValue(monPoint6.q) + 'kVar':"--"}</tspan>
               </text>
 
               <polygon className='switch-none-v' id="switch-fourteen" points="758.6,757.4 745.2,757.4 745.6,721 759,721 "/>
-              <text transform="matrix(0.8712 0 0 1 767.4003 729.2849)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint13.online==1?this.getValue(monPoint13.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint13.online==1?this.getValue(monPoint13.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint13.online==1?this.getValue(monPoint13.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 767.4003 729.2849)" className={this.state.showNum == 15 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint13.online==1?this.getValue(monPoint13.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint13.online==1?this.getValue(monPoint13.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint13.online==1?this.getValue(monPoint13.q) + 'kVar':"--"}</tspan>
               </text>
               <polygon className='switch-none-v' id="switch-fifteen"  points="1061,757.4 1047.6,757.4 1048,721 1061.4,721 "/>
-              <text transform="matrix(0.8712 0 0 1 1071.5503 729.2845)" className="st12 text">
-                <tspan x="0" y="0" className="st6 st2">I: {monPoint14.online==1?this.getValue(monPoint14.i):"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint14.online==1?this.getValue(monPoint14.p):"--"}</tspan>
-                <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint14.online==1?this.getValue(monPoint14.q):"--"}</tspan>
+              <text transform="matrix(0.8712 0 0 1 1071.5503 729.2845)" className={this.state.showNum == 16 ? "st12 text show" :'st12 text'}>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint14.online==1?this.getValue(monPoint14.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint14.online==1?this.getValue(monPoint14.p) + 'kw':"--"}</tspan>
+                <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint14.online==1?this.getValue(monPoint14.q) + 'kVar' + 'kVar':"--"}</tspan>
               </text>
 
 
@@ -868,18 +894,28 @@ var PowerGrid = React.createClass({
                 安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} H</tspan> 
               </text>
 
+              <rect width="230" height="90" x="500" y="95" id='ele1_1' className='ele-1' onMouseEnter={this.onMouseEnter.bind(this,1)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="200" height="90" x="790" y="95" id='ele1_2' className='ele-1' onMouseEnter={this.onMouseEnter.bind(this,2)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="230" height="90" x="1000" y="95" id='ele1_3' className='ele-1' onMouseEnter={this.onMouseEnter.bind(this,3)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="190" height="90" x="1280" y="95" id='ele1_4' className='ele-1' onMouseEnter={this.onMouseEnter.bind(this,4)} onMouseLeave={this.mouseLeave}></rect>
 
-              <rect width="930" height="90" x="500" y="95" className='ele-1'></rect>
-
-              <rect width="200" height="230" x="440" y="485" className='ele-2'></rect>
-              <rect width="175" height="230" x="1130" y="485" className="ele-2"></rect>
-
-              <rect width="290" height="230" x="120" y="485" className="ele-3"></rect>
-              <rect width="430" height="230" x="1330" y="485" className="ele-3"></rect>
               
-              <rect width="90" height="60" x="730" y="595" className="ele-4"></rect>
-              <rect width="90" height="60" x="1030" y="605" className="ele-4"></rect>
+              <rect width="90" height="230" x="430" y="485" id='ele2_1' className='ele-2' onMouseEnter={this.onMouseEnter.bind(this,5)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="100" height="280" x="530" y="485" id='ele2_2' className='ele-2' onMouseEnter={this.onMouseEnter.bind(this,6)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="100" height="280" x="1130" y="485" id="ele2_3" className='ele-2' onMouseEnter={this.onMouseEnter.bind(this,7)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="90" height="230" x="1230" y="485" id="ele2_4" className='ele-2' onMouseEnter={this.onMouseEnter.bind(this,8)} onMouseLeave={this.mouseLeave}></rect>
 
+              <rect width="80" height="230" x="120" y="485" id="ele3_1" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,9)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="80" height="230" x="220" y="485" id="ele3_2" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,10)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="80" height="230" x="330" y="485" id="ele3_3" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,11)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="80" height="230" x="1330" y="485" id="ele3_4" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,12)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="80" height="230" x="1510" y="485" id="ele3_5" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,13)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="80" height="230" x="1670" y="485" id="ele3_6" className='ele-3' onMouseEnter={this.onMouseEnter.bind(this,14)} onMouseLeave={this.mouseLeave}></rect>
+              
+              <rect width="90" height="60" x="730" y="595" id="ele4_1" className='ele-4' onMouseEnter={this.onMouseEnter.bind(this,15)} onMouseLeave={this.mouseLeave}></rect>
+              <rect width="90" height="60" x="1030" y="605" id="ele4_2" className='ele-4' onMouseEnter={this.onMouseEnter.bind(this,16)} onMouseLeave={this.mouseLeave}></rect>
+
+                            
               
             </g>
           </switch>
