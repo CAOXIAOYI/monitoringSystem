@@ -74,6 +74,10 @@ let pages = {
   /*** monitor-status 监测状态 start ***/
   deviceControlPage: require("./device-control/device-control.jsx"),
 
+  groundMonitorPage: require("./ground_monitor/index.jsx"),
+  jammingIntensityPage: require("./jamming_intensity/index.jsx"),
+  radiateMonitorPage: require("./radiate_monitor/index.jsx")
+
  
   /*** monitor-status end ***/
 

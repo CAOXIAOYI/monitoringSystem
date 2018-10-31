@@ -38,7 +38,10 @@ function getHeaderKey() {
     'electrical_machine':'electrical_machine',
     'history_data':'history_data',
     'monitor_status':'monitor_status',
-    'system_config':'system_config'
+    'system_config':'system_config',
+    'ground_monitor':'ground_monitor',
+    'jamming_intensity':'jamming_intensity',
+    'radiate_monitor':'radiate_monitor'
   };
 
   let selectedKeys = [];
@@ -66,6 +69,7 @@ class Header extends baseCom {
   }
 
   subHeaderClick(e){
+    console.log(e)
     this.setState({
       selectedKeys: [e.key],
     });

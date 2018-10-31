@@ -138,6 +138,7 @@ let Electric = React.createClass({
           item:['U 电压','I 电流'],
           data:[[item.uanhd,item.ianhd],[item.ubnhd,item.ibnhd],[item.ucnhd,item.icnhd]]
         }
+        console.log(currentEchartData)
         return (
           <div className="electric" key={index}>
            <Column data = {currentEchartData}/>

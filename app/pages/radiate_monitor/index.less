@@ -1,0 +1,180 @@
+.radiate-index{
+    width: 100%;
+    height:calc(~"100% - 115px");
+    background: #454859;
+    display: flex;
+    flex-direction: row;
+
+    .page-left{
+      flex:1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding:20px;
+      padding-top:75px;
+      .page-title{
+        position: absolute;
+        text-align: center;
+        line-height: 35px;
+        top: 20px;
+        width: 100%;
+        font-size:16px;
+        color:#fff;
+      }
+      .bottom-content{
+        position: relative;
+        width: 100%;
+        height: 60%;
+        background: #fff;
+        .img-bg{
+          height: 100%;
+          width: 100%;
+          &:first-child{
+            margin-bottom: 40px;
+          }
+        }
+        .monitor-point{
+          position: absolute;
+          font-size:14px;
+          line-height: 14px;
+          color:#000;
+          .point{
+            width: 10px;
+            display: inline-block;
+            height: 10px;
+            border-radius: 100%;
+            margin-top: 2px;
+            margin-right: 5px;
+          }
+          .red{
+            background: red;
+          }
+          .green{
+            .red;
+            background: green;
+          }
+        }
+        
+        .point-A{
+          left:48.5%;
+          top:11%;
+        }
+
+        .point-B{
+          left:48%;
+          top:47%;
+        }
+
+        .point-C{
+          left:59.5%;
+          top:30%;
+        }
+
+        .point-D{
+          left:58%;
+          top:66%;
+        }
+        .point-E{
+          left:82.5%;
+          top:51%;
+        }
+        .point-F{
+          left:5.5%;
+          top:9%;
+        }
+        .point-G{
+          left:20.5%;
+          top:9%;
+        }
+        .point-H{
+          left:5.5%;
+          top:79%;
+        }
+        .point-I{
+          left:20.5%;
+          top:79%;
+        }
+        
+      }
+     
+    }
+
+    .page-right{
+      width: 250px;
+      height: 100%;
+      padding-right: 10px;
+      color:#fff;
+      padding-top : 38px; 
+      position: relative;
+      .top-content{
+        display: flex;
+        flex-direction: row;
+        justify-content:flex-start;
+        align-items: center;
+        font-size:14px;
+        color:#fff;
+        .lable-txt{
+          margin-right: 20px;
+        }
+        .normal{
+          margin-right: 10px;
+        }
+        .circle{
+          display: inline-block;
+          margin-right: 5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+
+        }
+        .red{
+          background: red;
+        }
+        .green{
+          background: green;
+        }
+      }
+      .status-box{
+        .row{
+          height: 35px;
+          padding-right: 20px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .row-right{
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+        }
+        .red{
+          background: red;
+        }
+        .green{
+          background: green;
+        }
+      }
+
+      .bottom-box{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .btn{
+          padding:0 20px;
+          cursor: pointer;
+          height: 30px;
+          text-align: center;
+          line-height:30px;
+          font-size:14px;
+          color:#fff;
+          border:1px solid #fff;
+          border-radius: 30px;
+          margin-top: 20px;
+        }
+      }
+      
+    }
+    
+}

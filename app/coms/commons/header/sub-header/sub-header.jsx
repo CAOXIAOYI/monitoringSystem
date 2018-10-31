@@ -34,57 +34,88 @@ class SubHeader extends baseCom {
     //1 :普通用户  2：管理员  3：超级用户
     let privilegeLevel = window.localStorage.getItem("privilegeLevel");
     let subDom = [];
-    for(let i=10;i>-1;i--){
+    for(let i=13;i>-1;i--){
        let isisPrivilege = PRIVILEGE.isPrivilege(parseInt(privilege),i);
-       if(isisPrivilege && i === 10){
+       isisPrivilege = true;
+       if(isisPrivilege && i === 13){
           subDom.push( 
             <Menu.Item key="index">
               <NavLink to="/monitoringSystem/pages/index"><span>首页</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 9){
+       if(isisPrivilege && i === 12){
         subDom.push( 
           <Menu.Item key="sub_system">
             <NavLink to="/monitoringSystem/pages/sub_system/electric"><span>子系统监测</span></NavLink>
           </Menu.Item>
         )
        }
-       if(isisPrivilege && i === 8){
+       if(isisPrivilege && i === 11){
           subDom.push( 
             <Menu.Item key="power_quality">
               <NavLink to="/monitoringSystem/pages/power_quality/electric"><span>电能质量</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 7){
+       if(isisPrivilege && i === 10){
           subDom.push( 
             <Menu.Item key="device_characteristics">
               <NavLink to="/monitoringSystem/pages/device_characteristics/electric_equipment"><span>设备特性</span></NavLink>            
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 6){
+       if(isisPrivilege && i === 9){
           subDom.push( 
             <Menu.Item key="harmonic">
               <NavLink to="/monitoringSystem/pages/harmonic/electric"><span>谐波查询</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 5 && privilegeLevel !== '1'){
+       if(isisPrivilege && i === 8 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="device_control">
               <NavLink to="/monitoringSystem/pages/device_control"><span>设备接入管控</span></NavLink>
             </Menu.Item>
           );
        }
-       if(isisPrivilege && i === 4){
+       if(isisPrivilege && i === 7){
           subDom.push( 
             <Menu.Item key="electrical_machine">
               <NavLink to="/monitoringSystem/pages/electrical_machine/electric"><span>电机启停特性</span></NavLink>
             </Menu.Item>
           );
        }
+
+       if(isisPrivilege && i === 6){
+          subDom.push( 
+            <Menu.Item key="ground_monitor">
+              <NavLink to="/monitoringSystem/pages/ground_monitor"><span>接地监测</span></NavLink>
+            </Menu.Item>
+          );
+       }
+
+       if(isisPrivilege && i === 5){
+          subDom.push( 
+            <Menu.Item key="jamming_intensity">
+              <NavLink to="/monitoringSystem/pages/jamming_intensity"><span>电子干扰强度监测</span></NavLink>
+            </Menu.Item>
+          );
+       }
+
+       if(isisPrivilege && i === 4){
+          subDom.push( 
+            <Menu.Item key="radiate_monitor">
+              <NavLink to="/monitoringSystem/pages/radiate_monitor"><span>甲班辐射监测</span></NavLink>
+            </Menu.Item>
+          );
+       }
+
+
+
+
+
+
        if(isisPrivilege && i === 3 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="monitor_status">

@@ -106,6 +106,7 @@ const Column = React.createClass({
     if (_echartData) {
       this.updateDOM(_echartData);
       this.myChart.setOption(this.option);
+      this.forceUpdate()
     }
   },
   // componentDidUpdate() {
@@ -133,6 +134,7 @@ const Column = React.createClass({
     } else {
       conversionAngle = 0;
     }
+
     let _newState = _.cloneDeep(this.option);
     _.set(_newState, "title.text", _echartData.title);
     _.set(_newState, "legend.data", _echartData.legend);
@@ -154,10 +156,10 @@ const Column = React.createClass({
         data: _echartData.data[index],
         itemStyle: {
           normal: {
-            color: new echarts.graphic.LinearGradient(0, 0, 1, 0,_normal)
+            color:  new echarts.graphic.LinearGradient(0, 0, 1, 0,_normal)
           },
           emphasis: {
-            color: new echarts.graphic.LinearGradient(0, 0, 1, 0,_emphasis)
+            color:  new echarts.graphic.LinearGradient(0, 0, 1, 0,_emphasis)
           }
         }
         // silent: true,

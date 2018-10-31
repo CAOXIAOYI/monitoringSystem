@@ -44,6 +44,10 @@ var electricalMachineElectricPage = require("./pages/index.js").electricalMachin
 var monitorStatusPage = require("./pages/index.js").monitorStatusPage;
 
 var deviceControlPage = require("./pages/index.js").deviceControlPage;
+
+var groundMonitorPage = require("./pages/index.js").groundMonitorPage;
+var jammingIntensityPage = require("./pages/index.js").jammingIntensityPage;
+var radiateMonitorPage = require("./pages/index.js").radiateMonitorPage;
  
 
 var IndexPage = require("./pages/index.js").IndexPage;
@@ -179,6 +183,18 @@ class GenRouter{
           path: "device_control",
           component: deviceControlPage,
           onEnter: deviceControlAction.onEnter(this.dispatch)
+        },{
+          path: "ground_monitor",
+          component: groundMonitorPage,
+          onEnter: null
+        },{
+          path: "jamming_intensity",
+          component: jammingIntensityPage,
+          onEnter: null
+        },{
+          path: "radiate_monitor",
+          component: radiateMonitorPage,
+          onEnter: null
         }]
     }];
 
