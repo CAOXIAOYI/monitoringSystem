@@ -1,15 +1,16 @@
 import BaseModel  from './model.base.js'
 /*
-	省份城市信息
+	监测告警
 */
-class CityListModel extends BaseModel {
+class AlertMonitor extends BaseModel {
 	constructor(props) {
 		super(props);
-		this.url = '/ele/shangcen/xmdplatform/getListOfCity';
+		this.url = 'param/warnParametersSetting';
+		this.method = 'GET';
 	}
 }
 
 module.exports = {
-	CityListModel: CityListModel
+	AlertMonitor: AlertMonitor
 
 };

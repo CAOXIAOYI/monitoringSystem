@@ -32,6 +32,7 @@ var harmonicElectricPage = require("./pages/index.js").harmonicElectricPage;
 var paramSettingPage = require("./pages/index.js").paramSettingPage;
 var dynamoPage = require("./pages/index.js").dynamoPage;
 var ammeterPage = require("./pages/index.js").ammeterPage;
+var alertmontiorPage = require("./pages/index.js").alertmontiorPage;
 
 var powerQualityPage = require("./pages/index.js").powerQualityPage;
 var powerQualityElectricPage = require("./pages/index.js").powerQualityElectricPage;
@@ -67,6 +68,7 @@ import {
   historyDataAction,
   dynamoAction,
   ammeterAction,
+  alertmontiorAction,
   monitorStatusAction
 } from "./actions/page-action/index.js";
 
@@ -288,6 +290,10 @@ class GenRouter{
       path: "ammeter",
       component: ammeterPage,
       onEnter: ammeterAction.onEnter(this.dispatch)
+    },{
+      path: "alertmontior",
+      component: alertmontiorPage,
+      onEnter: alertmontiorAction.onEnter(this.dispatch)
     }];
     return router;
   

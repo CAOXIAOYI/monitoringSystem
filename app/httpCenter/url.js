@@ -446,6 +446,14 @@ module.exports = {
     method: "GET",
     url: URLResolve("/dfh/param/delDeviceParameters/#deviceId",true)
   },
+  getWarnParameter: {
+    method: "GET",
+    url: URLResolve("/dfh/param/warnParametersSetting",true)
+  },
+  updateWarnParameter: {
+    method: "GET",
+    url: URLResolve("/dfh/param/updateWarnParameter/#type",true)
+  },
   /**参数设置 end**/
   /** 电机启停特性 start**/
 

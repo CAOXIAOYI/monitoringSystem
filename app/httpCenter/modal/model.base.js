@@ -10,7 +10,7 @@ class BaseModel {
     
         this.url = '';
 
-        this.params ={};
+        this.params = null;
 
         this.contentType="";
 
@@ -69,11 +69,8 @@ class BaseModel {
     }
 
     buildParam() {
-        //公共参数默认传值
-        const commonParam = {
-            token:'234sdf234'
-        }
-        return $.extend(this.params,commonParam);
+        
+        return this.params
     }
 
     excute(onComplete, onError, timeout) {
@@ -89,7 +86,7 @@ class BaseModel {
             dataType: 'json',
             headers: this.headers,
             async:this.async,
-            data: JSON.stringify(this.buildParam()),
+            data:'',
             timeout: this.timeout,
             crossDomain: false,
             success: function (res, status, xhr) {

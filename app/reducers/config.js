@@ -15,6 +15,7 @@ var deviceControl = require('./device-control');//设备管控
 //var paramSetting = require('./param-setting');//参数设置
 var ammeter = require('./ammeter');//参数设置
 var dynamo = require('./dynamo');//参数设置
+var alertmontior = require('./alertmontior');//参数设置
 
 var electricalMachine = require('./electrical-machine');//电机启停特性
 
@@ -36,6 +37,7 @@ module.exports = {
   historyData,
   dynamo,
   ammeter,
+  alertmontior,
   monitorStatus,
   userManage
 

@@ -4,6 +4,11 @@ let React = require('react');
 let languageProvider = require("../../../../services/language/index.js");
 
 function genConfig(slidebarMeta) {
+  // ,{
+  //     key: "alertmontior",
+  //     name: "监测告警值",
+  //     url: "/monitoringSystem/pages/param_setting/alertmontior"
+  //   }
   return {
     title: '标题',
     defaultOpenKeys: ["dynamo"],

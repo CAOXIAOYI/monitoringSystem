@@ -52,6 +52,7 @@ let pages = {
 
   dynamoPage: require("./param-setting/dynamo/dynamo.jsx"),
   ammeterPage: require("./param-setting/ammeter/ammeter.jsx"),
+  alertmontiorPage: require("./param-setting/alertmontior/alertmontior.jsx"),
   /*** param setting end ***/
 
    /*** power quality 电能质量 start ***/

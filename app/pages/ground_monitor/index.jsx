@@ -11,10 +11,10 @@ import Column from './column/column.jsx';
 import { Modal,Input } from 'antd';
 
 import {
-  CityListModel,
+  AlertMonitor,
 } from '../../httpCenter/modal/business.model.js';
 
-const cityListModel = CityListModel.getInstance();
+const alertMonitor = AlertMonitor.getInstance();
 
 var classnames = require('classnames');
 require('./index.less');
@@ -66,13 +66,13 @@ class Index extends BaseCom {
   
  
   componentDidMount() {
-    // this.fetchPageInfo();
+    this.fetchPageInfo();
 
   }
 
   fetchPageInfo(){
-    cityListModel.setParam();
-    cityListModel.excute((res)=>{
+    alertMonitor.url = 'param/warnParameterSetting/resistance';
+    alertMonitor.excute((res)=>{
 
     },(err)=>{
       

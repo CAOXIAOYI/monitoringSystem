@@ -26,6 +26,7 @@ let monitorStatusAction = require("./monitor-status");
 
 let dynamoAction = require("./param-setting/dynamo");
 let ammeterAction = require("./param-setting/ammeter");
+let alertmontiorAction = require("./param-setting/alertmontior");
 
 
 var actions = {
@@ -41,7 +42,8 @@ var actions = {
   historyDataAction,
   dynamoAction,
   ammeterAction,
-  monitorStatusAction,
+  alertmontiorAction,
+  monitorStatusAction
 }
 
 module.exports = actions;

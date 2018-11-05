@@ -11,6 +11,8 @@ module.exports = {
     "updatedeviceParameters",
     "adddeviceParameters",
     "delMeterParameters",
-    "delDeviceParameters"
+    "delDeviceParameters",
+    "getWarnParameter",
+    "updateWarnParameter"
   ]
 }
