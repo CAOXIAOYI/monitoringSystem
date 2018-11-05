@@ -3,10 +3,18 @@
 let React = require('react');
 let BaseCom = require("../../coms/commons/base/baseCom.jsx");
 
+const FileUpload = require('react-fileupload');
+
 import Column from './column/column.jsx';
+
 
 import { Modal,Input } from 'antd';
 
+import {
+  CityListModel,
+} from '../../httpCenter/modal/business.model.js';
+
+const cityListModel = CityListModel.getInstance();
 
 var classnames = require('classnames');
 require('./index.less');
@@ -49,11 +57,26 @@ class Index extends BaseCom {
 
       }
     }
+
+    this.fileUploadOptions = {
+        baseUrl:'http://dfh.jokco.com/dfh/upload/1',
+        chooseAndUpload:true,
+    }
   }
   
  
   componentDidMount() {
-    
+    // this.fetchPageInfo();
+
+  }
+
+  fetchPageInfo(){
+    cityListModel.setParam();
+    cityListModel.excute((res)=>{
+
+    },(err)=>{
+      
+    })
   }
 
   showAlertModal(){
@@ -114,6 +137,8 @@ class Index extends BaseCom {
   }
 
   render() {
+
+
    
     const list = this.mock.alertList;
     return (
@@ -144,6 +169,10 @@ class Index extends BaseCom {
               </div>
             </div>
             <div className='bottom-box'>
+              <FileUpload options={this.fileUploadOptions}>
+                  <div className='date-putin btn' ref="chooseAndUpload">数据导入</div>
+                  
+              </FileUpload>
               <div className='date-putin btn'>数据导入</div>
               <div className='set-alert btn' onClick={this.showAlertModal.bind(this)}>告警值设置</div>
             </div>

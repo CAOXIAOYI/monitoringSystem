@@ -75,6 +75,21 @@ var LabGrid = React.createClass({
     this.zoomgroup.attr("cursor", "move");
     this.zoomgroup.attr("transform", "translate(" + trans + ")" + " scale(" + scale + ")");
   },
+
+  onMouseEnter(num){
+    // alert(num + 45)
+    this.setState({
+      showNum:num
+    })
+  },
+
+  mouseLeave(){
+    this.setState({
+      showNum:null
+    })
+  },
+
+
   render: function () {
     let monPoint16 = {};
     let monPoint17 = {};
@@ -230,26 +245,26 @@ var LabGrid = React.createClass({
             </g>
             <text transform="matrix(0.8712 0 0 1 880.5518 414.5618)" className="non-stroke st5 st7">AUTO CHANGE</text>
 
-            <polygon id="switch-eleven" className={this.getVSwitch(monPoint16.i)} points="873.4,318.1 860,318.1 860.4,281.7 873.8,281.7 "/>
+            <polygon id="switch-eleven" className={this.getVSwitch(monPoint16.i)} points="873.4,318.1 860,318.1 860.4,281.7 873.8,281.7 " />
             <text transform="matrix(0.8712 0 0 1 880.5518 284.9368)" className="non-stroke st11 st6">
-               I: {monPoint16.online==1?this.getValue(monPoint16.i):"--"}
+               I: {monPoint16.online==1?this.getValue(monPoint16.i) + 'A':"--"}
             </text>
             <text transform="matrix(0.8712 0 0 1 880.5518 311.137)" className="non-stroke st11 st6">
-              P:{monPoint16.online==1?this.getValue(monPoint16.p):"--"}
+              P:{monPoint16.online==1?this.getValue(monPoint16.p) + 'kw':"--"}
             </text>
             <text transform="matrix(0.8712 0 0 1 880.5518 337.3372)" className="non-stroke st11 st6">
-              Q:{monPoint16.online==1?this.getValue(monPoint16.q):"--"}
+              Q:{monPoint16.online==1?this.getValue(monPoint16.q) + 'kVar':"--"}
              </text>
 
             <polygon id="switch-thirteen" className={this.getVSwitch(monPoint18.i)} points="920,510.5 906.6,510.5 907,474.1 920.4,474.1 "/>
             <text transform="matrix(0.8712 0 0 1 927.916 474.0999)" className="non-stroke st11 st6">
-              I: {monPoint18.online==1?this.getValue(monPoint18.i):"--"}
+              I: {monPoint18.online==1?this.getValue(monPoint18.i) + 'A':"--"}
             </text>
             <text transform="matrix(0.8712 0 0 1 927.916 500.3001)" className="non-stroke st11 st6">
-              P:{monPoint18.online==1?this.getValue(monPoint18.p):"--"}
+              P:{monPoint18.online==1?this.getValue(monPoint18.p) + 'kw':"--"}
             </text>
             <text transform="matrix(0.8712 0 0 1 927.916 526.5003)" className="non-stroke st11 st6">
-              Q:{monPoint18.online==1?this.getValue(monPoint18.q):"--"}
+              Q:{monPoint18.online==1?this.getValue(monPoint18.q) + 'kVar':"--"}
             </text>
             <g>
               <g>
@@ -261,13 +276,13 @@ var LabGrid = React.createClass({
               
               <polygon id="switch-twelve" className={this.getVSwitch(monPoint17.i)} points="997.2,317 983.8,317 984.2,280.6 997.6,280.6   "/>
               <text transform="matrix(0.8712 0 0 1 1006.5625 284.4524)" className="non-stroke st11 st6">
-                I: {monPoint17.online==1?this.getValue(monPoint17.i):"--"}
+                I: {monPoint17.online==1?this.getValue(monPoint17.i) + 'A':"--"}
               </text>
               <text transform="matrix(0.8712 0 0 1 1006.5625 310.6526)" className="non-stroke st11 st6">
-                P:{monPoint17.online==1?this.getValue(monPoint17.p):"--"}
+                P:{monPoint17.online==1?this.getValue(monPoint17.p) + 'kw':"--"}
               </text>
               <text transform="matrix(0.8712 0 0 1 1006.5625 336.8528)" className="non-stroke st11 st6">
-                Q:{monPoint17.online==1?this.getValue(monPoint17.q):"--"}
+                Q:{monPoint17.online==1?this.getValue(monPoint17.q) + 'kVar':"--"}
               </text>
             </g>
             <polygon id="switch-on-lende"  className="switch-on-h" points="68.2,149.9 61.5,149.7 61.6,130.7 68.3,130.9 "/>
@@ -288,7 +303,7 @@ var LabGrid = React.createClass({
               实验室电网母线电压：<tspan className="text">{this.getValue(systemInfo.u)} V</tspan> 
             </text>
             <text transform="matrix(0.8712 0 0 1 61.4998 263.6577)" className="non-stroke st9 st4 larger">
-              安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} H</tspan> 
+              安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} 小时</tspan> 
             </text>
 
             {/*<text transform="matrix(0.8712 0 0 1 64.9111 190.6575)" className="non-stroke st11 st6">电流(I)：</text>
@@ -317,9 +332,9 @@ var LabGrid = React.createClass({
             <text transform="matrix(0.8712 0 0 1 923.916 615.722)" className="non-stroke st12 st17">配电箱</text>
             <rect x="1123.7" y="473.6" id="switch-fourteen" className={this.getHSwitch(monPoint31.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 1142.5332 406.9007)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="non-stroke st6 st2">I: {monPoint31.online==1?this.getValue(monPoint31.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint31.online==1?this.getValue(monPoint31.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint31.online==1?this.getValue(monPoint31.q):"--"}</tspan>
+              <tspan x="0" y="0" className="non-stroke st6 st2">I: {monPoint31.online==1?this.getValue(monPoint31.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint31.online==1?this.getValue(monPoint31.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint31.online==1?this.getValue(monPoint31.q) + 'kVar':"--"}</tspan>
             </text>
 
             <g>
@@ -408,32 +423,32 @@ var LabGrid = React.createClass({
 
             <rect x="704" y="601" id="switch-four" className={this.getHSwitch(monPoint19.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 630.6738 540.2806)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint19.online==1?this.getValue(monPoint19.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint19.online==1?this.getValue(monPoint19.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint19.online==1?this.getValue(monPoint19.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint19.online==1?this.getValue(monPoint19.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint19.online==1?this.getValue(monPoint19.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint19.online==1?this.getValue(monPoint19.q) + 'kVar':"--"}</tspan>
             </text>
 
 
             <rect x="383" y="600.8" id="switch-one" className={this.getHSwitch(monPoint20.i)} width="37.3" height="14.3"/>
             <text transform="matrix(0.8712 0 0 1 318.793 540.9368)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint20.online==1?this.getValue(monPoint20.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint20.online==1?this.getValue(monPoint20.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint20.online==1?this.getValue(monPoint20.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint20.online==1?this.getValue(monPoint20.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint20.online==1?this.getValue(monPoint20.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint20.online==1?this.getValue(monPoint20.q) + 'kVar':"--"}</tspan>
             </text>
 
             <rect x="383" y="769.2" id="switch-two" className={this.getHSwitch(monPoint22.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 318.793 710.3001)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint22.online==1?this.getValue(monPoint22.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint22.online==1?this.getValue(monPoint22.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint22.online==1?this.getValue(monPoint22.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint22.online==1?this.getValue(monPoint22.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint22.online==1?this.getValue(monPoint22.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint22.online==1?this.getValue(monPoint22.q) + 'kVar':"--"}</tspan>
             </text>
 
 
             <rect x="377.9" y="940.7" id="switch-three" className={this.getHSwitch(monPoint26.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 318.71 880.806)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint26.online==1?this.getValue(monPoint26.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint26.online==1?this.getValue(monPoint26.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint26.online==1?this.getValue(monPoint26.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint26.online==1?this.getValue(monPoint26.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint26.online==1?this.getValue(monPoint26.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint26.online==1?this.getValue(monPoint26.q) + 'kVar':"--"}</tspan>
             </text>
 
             <polyline className="st0" points="903.1,645.8 902.1,776.7 603.9,776.8 "/>
@@ -441,30 +456,30 @@ var LabGrid = React.createClass({
 
             <rect x="705.4" y="769.6" id="switch-five" className={this.getHSwitch(monPoint21.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 630.0605 700.8587)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint21.online==1?this.getValue(monPoint21.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint21.online==1?this.getValue(monPoint21.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint21.online==1?this.getValue(monPoint21.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint21.online==1?this.getValue(monPoint21.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint21.online==1?this.getValue(monPoint21.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint21.online==1?this.getValue(monPoint21.q) + 'kVar':"--"}</tspan>
             </text>
 
             <rect x="705" y="941.1" id="switch-six" className={this.getHSwitch(monPoint25.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 630.6738 880.3646)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint25.online==1?this.getValue(monPoint25.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint25.online==1?this.getValue(monPoint25.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint25.online==1?this.getValue(monPoint25.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint25.online==1?this.getValue(monPoint25.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint25.online==1?this.getValue(monPoint25.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint25.online==1?this.getValue(monPoint25.q) + 'kVar':"--"}</tspan>
             </text>
 
             <rect x="1160.6" y="600.7" id="switch-seven" className={this.getHSwitch(monPoint23.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 1120.2568 540.9808)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint23.online==1?this.getValue(monPoint23.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint23.online==1?this.getValue(monPoint23.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint23.online==1?this.getValue(monPoint23.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint23.online==1?this.getValue(monPoint23.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint23.online==1?this.getValue(monPoint23.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint23.online==1?this.getValue(monPoint23.q) + 'kVar':"--"}</tspan>
             </text>
 
             <rect x="1150.2" y="854.4" id="switch-eight" className={this.getHSwitch(monPoint27.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 1120.874 790.6292)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint27.online==1?this.getValue(monPoint27.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint27.online==1?this.getValue(monPoint27.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint27.online==1?this.getValue(monPoint27.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint27.online==1?this.getValue(monPoint27.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint27.online==1?this.getValue(monPoint27.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint27.online==1?this.getValue(monPoint27.q) + 'kVar':"--"}</tspan>
             </text>
             <rect x="1264.3" y="462.9" className="st0" width="105.2" height="38.7"/>
             <text transform="matrix(0.8712 0 0 1 1301.1191 489.9544)" className="non-stroke st12 st17">UPS</text>
@@ -480,16 +495,16 @@ var LabGrid = React.createClass({
             <line id="polyline_4_9_" className="st0" x1="1630.6" y1="864.7" x2="1419.8" y2="864.7"/>
             <rect x="1480.1" y="601.1" id="switch-nine"  className={this.getHSwitch(monPoint24.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 1437.2178 540.9798)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint24.online==1?this.getValue(monPoint24.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint24.online==1?this.getValue(monPoint24.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint24.online==1?this.getValue(monPoint24.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint24.online==1?this.getValue(monPoint24.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint24.online==1?this.getValue(monPoint24.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint24.online==1?this.getValue(monPoint24.q) + 'kVar':"--"}</tspan>
             </text>
 
             <rect x="1480.9" y="857" id="switch-ten" className={this.getHSwitch(monPoint28.i)} width="37.3" height="15.3"/>
             <text transform="matrix(0.8712 0 0 1 1437.2178 790.2191)" className="non-stroke st11 st6">
-              <tspan x="0" y="0" className="st6 st2">I: {monPoint28.online==1?this.getValue(monPoint28.i):"--"}</tspan>
-              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint28.online==1?this.getValue(monPoint28.p):"--"}</tspan>
-              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint28.online==1?this.getValue(monPoint28.q):"--"}</tspan>
+              <tspan x="0" y="0" className="st6 st2">I: {monPoint28.online==1?this.getValue(monPoint28.i) + 'A':"--"}</tspan>
+              <tspan x="0" y="26.2" className="st6 st2">P:{monPoint28.online==1?this.getValue(monPoint28.p) + 'kw':"--"}</tspan>
+              <tspan x="0" y="52.4" className="st6 st2">Q:{monPoint28.online==1?this.getValue(monPoint28.q) + 'kVar':"--"}</tspan>
             </text>
             <line id="polyline_1_1_" className="st0" x1="560.5" y1="168.6" x2="644.1" y2="168.6"/>
             <circle className="st4" cx="485" cy="607.9" r="4"/>

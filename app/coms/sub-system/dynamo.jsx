@@ -178,8 +178,6 @@ class Dynamo extends BaseCom {
            <span>无功(Q)：</span>
            <span className="unit">kVar</span>
           </div>
-          <div className="dynamo-top">
-          </div>
           <div className="dynamo-middle">
             <div className="dynamo-middle-left">
               <div className="u-left">Busbar A</div>

@@ -13,7 +13,7 @@ const Column = React.createClass({
       title: {
         text: "",
         textStyle: {
-          fontSize: 10,
+          fontSize: 14,
           color: '#fff'
         }
       },
@@ -136,6 +136,9 @@ const Column = React.createClass({
     }
 
     let _newState = _.cloneDeep(this.option);
+    if(this.props.hideYAxisName){
+     _.set(_newState, "yAxis[0].name", '');
+    }
     _.set(_newState, "title.text", _echartData.title);
     _.set(_newState, "legend.data", _echartData.legend);
     _.set(_newState, "xAxis[0].data", _echartData.item);

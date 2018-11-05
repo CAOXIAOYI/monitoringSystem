@@ -60,18 +60,19 @@ class SubHeader extends baseCom {
        }
        if(isisPrivilege && i === 10){
           subDom.push( 
-            <Menu.Item key="device_characteristics">
-              <NavLink to="/monitoringSystem/pages/device_characteristics/electric_equipment"><span>设备特性</span></NavLink>            
+            <Menu.Item key="harmonic">
+              <NavLink to="/monitoringSystem/pages/harmonic/electric"><span>谐波监测</span></NavLink>
             </Menu.Item>
           );
        }
        if(isisPrivilege && i === 9){
           subDom.push( 
-            <Menu.Item key="harmonic">
-              <NavLink to="/monitoringSystem/pages/harmonic/electric"><span>谐波查询</span></NavLink>
+            <Menu.Item key="device_characteristics">
+              <NavLink to="/monitoringSystem/pages/device_characteristics/electric_equipment"><span>设备特性</span></NavLink>            
             </Menu.Item>
           );
        }
+       
        if(isisPrivilege && i === 8 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="device_control">
@@ -90,7 +91,7 @@ class SubHeader extends baseCom {
        if(isisPrivilege && i === 6){
           subDom.push( 
             <Menu.Item key="ground_monitor">
-              <NavLink to="/monitoringSystem/pages/ground_monitor"><span>接地监测</span></NavLink>
+              <NavLink to="/monitoringSystem/pages/ground_monitor"><span>接地电阻监测</span></NavLink>
             </Menu.Item>
           );
        }
@@ -98,7 +99,7 @@ class SubHeader extends baseCom {
        if(isisPrivilege && i === 5){
           subDom.push( 
             <Menu.Item key="jamming_intensity">
-              <NavLink to="/monitoringSystem/pages/jamming_intensity"><span>电子干扰强度监测</span></NavLink>
+              <NavLink to="/monitoringSystem/pages/jamming_intensity"><span>电磁场强度监测</span></NavLink>
             </Menu.Item>
           );
        }
@@ -106,7 +107,7 @@ class SubHeader extends baseCom {
        if(isisPrivilege && i === 4){
           subDom.push( 
             <Menu.Item key="radiate_monitor">
-              <NavLink to="/monitoringSystem/pages/radiate_monitor"><span>甲班辐射监测</span></NavLink>
+              <NavLink to="/monitoringSystem/pages/radiate_monitor"><span>甲板电磁场分布监测</span></NavLink>
             </Menu.Item>
           );
        }
@@ -134,7 +135,7 @@ class SubHeader extends baseCom {
        if(isisPrivilege && i === 1 && privilegeLevel !== '1'){
           subDom.push( 
             <Menu.Item key="param_setting">
-              <NavLink to="/monitoringSystem/pages/param_setting/dynamo"><span>参数设置页</span></NavLink>
+              <NavLink to="/monitoringSystem/pages/param_setting/dynamo"><span>参数设置</span></NavLink>
             </Menu.Item>
           );
        }

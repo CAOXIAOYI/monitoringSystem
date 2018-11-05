@@ -18,14 +18,14 @@ let ElectricEquipment = React.createClass({
   render: function () {
     
     let actEchartData = {
-      title:'',
-      legend:['有功功率特性曲线'],
+      title:'有功功率特性曲线',
+      legend:[''],
       item:[],
       data:[[]]
     }
     let reactEchartData = {
-      title:'',
-      legend:['无功功率特性曲线'],
+      title:'无功功率特性曲线',
+      legend:[''],
       item:[],
       data:[[]]
     }
@@ -67,7 +67,18 @@ let ElectricEquipment = React.createClass({
       hdColumnData.data = [[thdDistr.uanhd,thdDistr.ianhd],[thdDistr.ubnhd,thdDistr.ibnhd],[thdDistr.ucnhd,thdDistr.icnhd]];
 
     }
+    var date = new Date();
+    var year = date.getFullYear();    //获取完整的年份(4位,1970-????)
+    var month = date.getMonth() + 1;       //获取当前月份(0-11,0代表1月)
+    var day = date.getDate();  
+    const currentDay = year + '-' + month + '-' + day;
 
+    const topCloumnData = {
+      title:'功率因数',
+      legend:['功率因数'],
+      item:[currentDay],
+      data:[[deviceCharacteristicsData.powerFactor || 0]]
+    };
 
 
     // const t
@@ -75,15 +86,6 @@ let ElectricEquipment = React.createClass({
     return (
       <div className="page-electric-equipment">
         <div className="electric-equipment-container">
-          <h2>设备相关参数:</h2>
-          <Row className="device-param">
-             <Col span={6} >
-                功率因数
-             </Col>
-             <Col span={6} >
-               {deviceCharacteristicsData.powerFactor || 0}
-             </Col>
-          </Row>
           <div className="electric-echarts">
             <div className='content-left'>
               <div className='row-top'>
@@ -95,7 +97,14 @@ let ElectricEquipment = React.createClass({
               
             </div>
             <div className='content-right'>
-              <Column data = {hdColumnData}/>
+              <div className='top-content'>
+                <Column data = {topCloumnData} hideYAxisName={true}/>
+              </div>
+              <div className='bottom-content'>
+                <Column data = {hdColumnData} hideYAxisName={true}/>
+              </div>
+              
+              
             </div>
           </div>
         </div>

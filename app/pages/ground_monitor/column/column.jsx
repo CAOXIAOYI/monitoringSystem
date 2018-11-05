@@ -69,7 +69,7 @@ const Column = React.createClass({
       }],
       yAxis: [{
         type: 'value',
-        name:'%',
+        name:'',
         splitLine: {
           show: false,
         },
@@ -176,7 +176,7 @@ const Column = React.createClass({
           normal:{
             position:'top',
             show:true,
-            formatter: '{c}'+ 'Ω',
+            formatter: '{c}'+ 'mΩ',
             color:'#fff'
           },
         },
@@ -185,7 +185,7 @@ const Column = React.createClass({
             normal:{
               show:true,
               position:'middle',
-              formatter:'警告值：{c}' + 'Ω',
+              formatter:'警告值：{c}' + 'mΩ',
               color:'red',
             }
           },

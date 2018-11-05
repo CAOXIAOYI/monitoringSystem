@@ -149,6 +149,31 @@ let Electric = React.createClass({
       <div className="page-power-quality">
         <div className="electric-equipment-container">
           <div className="electric-left">
+            <div className="electric-footer">
+              <div className="electric-footer-left" >
+                <div className="electric-item-legend">
+                 <div className="electric-div">
+                   <span className="item-status gray"><span className="circle circle-gray"></span></span>
+                   <span className="item-text">N/A</span>
+                 </div>
+                <div className="electric-div">
+                   <span className="item-status green"><span className="circle circle-green"></span></span>
+                   <span className="item-text">正常</span>  
+                 </div>
+                <div className="electric-div">
+                   <span className="item-status yellow"><span className="circle circle-yellow"></span></span>
+                   <span className="item-text">黄色告警</span>
+                 </div>
+                 <div className="electric-div">
+                    <span className="item-status red"><span className="circle circle-red"></span></span>
+                    <span className="item-text">红色告警</span>
+                 </div>
+                </div>
+              </div>
+              <div className="electric-footer-right">
+                {bottomDom}
+              </div>
+            </div>
             <div className="electric-echarts">
               <RealLineU data={realEchartDataU} />
             </div>
@@ -160,31 +185,7 @@ let Electric = React.createClass({
             {rightDom}
           </div>
         </div>
-        <div className="electric-footer">
-          <div className="electric-footer-left" >
-            <div className="electric-item-legend">
-             <div className="electric-div">
-               <span className="item-status gray"><span className="circle circle-gray"></span></span>
-               <span className="item-text">N/A</span>
-             </div>
-            <div className="electric-div">
-               <span className="item-status green"><span className="circle circle-green"></span></span>
-               <span className="item-text">正常</span>  
-             </div>
-            <div className="electric-div">
-               <span className="item-status yellow"><span className="circle circle-yellow"></span></span>
-               <span className="item-text">黄色告警</span>
-             </div>
-             <div className="electric-div">
-                <span className="item-status red"><span className="circle circle-red"></span></span>
-                <span className="item-text">红色告警</span>
-             </div>
-            </div>
-          </div>
-          <div className="electric-footer-right">
-            {bottomDom}
-          </div>
-        </div>
+        
       </div>
     );
   },

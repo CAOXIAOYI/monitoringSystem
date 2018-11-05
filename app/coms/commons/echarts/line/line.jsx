@@ -12,8 +12,10 @@ const Line = React.createClass({
     this.option =  {
         title: {
           text: '',
+          left:'0',
+          top:'-20px',
           textStyle: {
-            fontSize: 10,
+            fontSize: 14,
             color: '#fff'
           }
         },

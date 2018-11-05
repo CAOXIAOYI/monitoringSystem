@@ -37,7 +37,7 @@ var PowerGrid = React.createClass({
     this.zoomgroup = d3.select("#path_1_g");
     this.svg.on("dblclick.zoom", null)
         .call(d3.behavior.zoom().on("zoom", this._rescale));
-    // this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
+    this.zoomgroup.attr("transform", " scale(" + this.scale + ")");
 
     //跳转至"子系统监测"页面
     this.goSubSystem('#ele1_1',1);
@@ -83,6 +83,7 @@ var PowerGrid = React.createClass({
   },
 
   _rescale() {
+    return
     let scale = d3.event.scale;
     let trans = d3.event.translate;
     this.trans = trans;
@@ -193,7 +194,7 @@ var PowerGrid = React.createClass({
     }
     return (
       <div className="sub-index">
-        <svg id="path_1" className="power-svg" viewBox="100 80 1700 1130" preserveAspectRatio="xMidYMid meet">
+        <svg id="path_1" className="power-svg" viewBox="0 0 1700 1130" preserveAspectRatio="xMidYMid meet">
           <switch>
             <g className="zoom-container" id="path_1_g">
                 <defs>
@@ -741,8 +742,8 @@ var PowerGrid = React.createClass({
 
               <polygon className='switch-none-v' id="switch-one" points="165.8,442.9 152.5,442.9 152.9,406.5 166.2,406.5 "/>
               <text transform="matrix(0.8712 0 0 1 168.4 410.5002)" className={this.state.showNum == 9 ? "st12 text show" :'st12 text'}>
-                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint12.online==1?this.getValue(monPoint12.i) + 'A' + 'A':"--"}</tspan>
-                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint12.online==1?this.getValue(monPoint12.p) + 'kw' + 'kw':"--"}</tspan>
+                <tspan x="0" y="0" className="st6 st2 tspan_i">I: {monPoint12.online==1?this.getValue(monPoint12.i) + 'A':"--"}</tspan>
+                <tspan x="0" y="26.2" className="st6 st2">P:{monPoint12.online==1?this.getValue(monPoint12.p) + 'kw':"--"}</tspan>
                 <tspan x="0" y="52.4" className="st6 st2 tspan_q">Q:{monPoint12.online==1?this.getValue(monPoint12.q) + 'kVar':"--"}</tspan>
               </text>
 
@@ -891,7 +892,7 @@ var PowerGrid = React.createClass({
                 动力电网母线电压：<tspan className="text">{this.getValue(systemInfo.u)} V</tspan> 
               </text>
               <text transform="matrix(0.8712 0 0 1 61.4998 263.6577)" className="non-stroke st9 st4">
-                安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} H</tspan> 
+                安全运行小时数：<tspan className="text">{this.getValue(systemInfo.hours)} 小时</tspan> 
               </text>
 
               <rect width="230" height="90" x="500" y="95" id='ele1_1' className='ele-1' onMouseEnter={this.onMouseEnter.bind(this,1)} onMouseLeave={this.mouseLeave}></rect>

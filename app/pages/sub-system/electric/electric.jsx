@@ -48,6 +48,7 @@ let Electric = React.createClass({
     
   },
   _genDom(_monitorDatas,currentDeviceType){
+
       if(!_monitorDatas || !currentDeviceType){
         return;
       }
@@ -72,6 +73,7 @@ let Electric = React.createClass({
             }
           } 
      });
+
     return {header:header1,body:body1};
   },
 
@@ -144,7 +146,7 @@ let Electric = React.createClass({
             </div>
            <div className="electric-container">
               <div className="electric-head">
-                <span></span>
+                <span>设备</span>
                 {_header}
               </div>
               {_body}

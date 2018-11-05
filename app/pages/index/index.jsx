@@ -43,6 +43,7 @@ class Index extends BaseCom {
     }
   }
   componentDidMount() {
+    this.props.alertData();
     this.timer = setInterval(() => this.tick(), 3000);
   }
   componentWillUnmount(){
@@ -93,10 +94,10 @@ class Index extends BaseCom {
         <div className='page-left'>
           {this.state.powerGrid ? <PowerGrid data={appMeta} /> : <LabGrid data={appMeta} />}
           <div className="index-chageBtn">
-            <div className={this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"power")}>
+            <div className={this.state.cancelBtn?selectedClass:""} onClick={this.chanageHandleClick.bind(this,"power")}>
               <span>动力电网</span>
             </div>
-            <div className={!!!this.state.cancelBtn?selectedClass:""} onMouseOver={this.chanageHandleClick.bind(this,"lab")}>
+            <div className={!!!this.state.cancelBtn?selectedClass:""} onClick={this.chanageHandleClick.bind(this,"lab")}>
               <span>实验室电网</span>
             </div>
           </div>
@@ -104,8 +105,10 @@ class Index extends BaseCom {
         <div className='page-right'>
           <div className="event-header">
             <div>时间</div>
-            <div>名称</div>
-            <div>描述</div>
+            <div>设备名称</div>
+            <div>事件描述</div>
+            <div>事件等级</div>
+            <div>事件状态</div>
           </div>
           <div className='scroll-body'>
             {this.renderAlert(appMeta.alertData)}
