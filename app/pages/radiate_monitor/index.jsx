@@ -124,7 +124,7 @@ class Index extends BaseCom {
     return (
       <div className="radiate-index">
         <div className='page-left'>
-          <div className = 'page-title'>作业甲班辐射强度分布监控界面</div>  
+          <div className = 'page-title'>作业甲板辐射强度分布监控界面</div>  
           <div className='bottom-content'>
             <img className='img-bg' src={require('../../assets/img/radiate-top.png')}/>
             {this.renderPoint()}

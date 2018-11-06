@@ -451,8 +451,8 @@ module.exports = {
     url: URLResolve("/dfh/param/warnParametersSetting",true)
   },
   updateWarnParameter: {
-    method: "GET",
-    url: URLResolve("/dfh/param/updateWarnParameter/#type",true)
+    method: "POST",
+    url: URLResolve("/dfh/param/updateWarnParameter",true)
   },
   /**参数设置 end**/
   /** 电机启停特性 start**/

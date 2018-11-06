@@ -19,14 +19,6 @@ module.exports = function(state = initState, action) {
       return newState;
     case actions.async.updateWarnParameter.success:
       return newState;
-    case actions.async.addMeterParameters.success:
-      return newState;
-    case actions.async.delMeterParameters.success:
-      let resultIndex = newState.result.indexOf(action.pathParams.meterId);
-        newState.result.splice(resultIndex, 1);
-        delete newState.ammeterDatas[action.pathParams.meterId];
-      return newState;
-    
     default:
       return newState;
   }

@@ -162,7 +162,7 @@ let Electric = React.createClass({
                  </div>
                 <div className="electric-div">
                    <span className="item-status yellow"><span className="circle circle-yellow"></span></span>
-                   <span className="item-text">黄色告警</span>
+                   <span className="item-text">橙色告警</span>
                  </div>
                  <div className="electric-div">
                     <span className="item-status red"><span className="circle circle-red"></span></span>

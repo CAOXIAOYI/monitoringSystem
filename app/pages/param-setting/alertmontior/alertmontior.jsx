@@ -22,8 +22,8 @@ let ElectricEquipment = React.createClass({
     {title: '监测内容',
       dataIndex: 'montiorName',
       key: 'montiorName',
-      width:120, 
-      flet:'left'
+      width:120
+      
     }, 
     {title: '黄色告警值',
       dataIndex: 'yellowValue',
@@ -36,7 +36,7 @@ let ElectricEquipment = React.createClass({
       width:120, 
     }, 
     
-    {title: '操作',key: 'operation',width:100,flet:'right',
+    {title: '操作',key: 'operation',width:100,
       render: (text, record) => (
         <span>
           <a className="detail-data" onClick={this.showAddParamModal.bind(this,record,"edit")} > 编辑 </a>
@@ -61,8 +61,8 @@ let ElectricEquipment = React.createClass({
 
         target = {
           montiorName:'接地电阻监测',
-          yellowValue:item.upperUpperLimit || 0,
-          redValue:item.upperLimit || 0,
+          yellowValue:item.upperLimit || 0,
+          redValue:item.upperUpperLimit || 0,
           key:'emi'
         }
 
@@ -70,15 +70,15 @@ let ElectricEquipment = React.createClass({
       }else if(item.key == "resistance"){
         target = {
           montiorName:'实验室电磁干扰监测',
-          yellowValue:item.upperUpperLimit || 0,
-          redValue:item.upperLimit || 0,
+          yellowValue:item.upperLimit || 0,
+          redValue:item.upperUpperLimit || 0,
           key:'resistance'
         }
       }else{
         target = {
           montiorName:'甲板辐射监测',
-          yellowValue:item.upperUpperLimit || 0,
-          redValue:item.upperLimit || 0,
+          yellowValue:item.upperLimit || 0,
+          redValue:item.upperUpperLimit || 0,
           key:"radiation"
         }
       }
@@ -90,14 +90,15 @@ let ElectricEquipment = React.createClass({
   
   showAddParamModal(record,type) {
 
+
     let newState = _.cloneDeep(this.state);
     newState.addModal.data = {};
-    if(type === "edit"){
-      newState.addModal.data = record;
-    }
+    
+    newState.addModal.data = record;
+    newState.addModal.title = record.montiorName + '告警值';
+    
 
     newState.addModal.isShowCreateParamModal = true;
-    this.props.meterParametersSetting({pageSize:200});
     this.setState(newState);
   },
   
@@ -109,43 +110,22 @@ let ElectricEquipment = React.createClass({
   },
  
   onSubmitAddParamModal(param) {
-    if(param.id){
-      return this.props.updatedeviceParameters(param).then((result) => {
-        message.success("保存成功");
-        this.onHideAddParamModal();
-       
-      })
-    }else{
-      return this.props.adddeviceParameters(param).then((result) => {
-        message.success("保存成功");
-        this.onHideAddParamModal();
-      })
+
+    const _param = {
+      key:param.key,
+      upperLimit:param.yellowValue,
+      upperUpperLimit:param.redValue
     }
-  },
-  gotoThispage(page, pageSize) {
-    let param = {
-      page: page,
-      pageSize: pageSize
-    };
-    this.props.deviceParametersSetting(param)
-  },
+    return this.props.updateWarnParameter(_param).then((result) => {
+      message.success("保存成功");
 
-
-  toSelectchange(page, pageSize) {
-    let param = {
-      page: page,
-      pageSize: pageSize
-    };
-    this.props.deviceParametersSetting(param).then((result) => {
-
-    });
+      this.onHideAddParamModal();
+    })
   },
-  onChange(pagination, filters, sorter) {
-    //console.log('params--->', pagination, filters, sorter);
-  },
+  
   render: function () {
     let self = this;
-    let tableData = this.formatListData(this.props.alertmontior.alertMontiorData);
+    let tableData = this.formatListData(this.props.alertmontior.alertMontiorData || []);
 
     let addClass = classnames({
       "btn-row": true,
@@ -160,16 +140,13 @@ let ElectricEquipment = React.createClass({
           scroll={{ x: '100%', y: "100%" }} 
           pagination={false}
         />
-        <div className={addClass}>
-          <div className="add-chageBtn" onClick={this.showAddParamModal}>
-            <span>新增</span>
-          </div>
-        </div>
+        
         {<EditAlertMontior
           visible={this.state.addModal.isShowCreateParamModal}
           onHide={this.onHideAddParamModal}
           onSubmit={this.onSubmitAddParamModal}
           data={this.state.addModal.data}
+          title={this.state.addModal.title}
         />}
       </div>
     );
@@ -180,7 +157,6 @@ let ElectricEquipment = React.createClass({
 var alertmontiorAction = require('../../../actions/page-action/param-setting/alertmontior');
 
 function mapStateToProps(state, ownProps) {
-  console.log(state)
   return {
     alertmontior: state.alertmontior
   };

@@ -20,7 +20,11 @@ exports.onEnter = function(dispatch) {
 //添加告警值设置
 exports.updateWarnParameter = function(param, pathParams) {
   return (dispatch) => {
-    return dispatch(paramSetting.updateWarnParameter(param, pathParams)).catch((err) => {
+    return dispatch(paramSetting.updateWarnParameter(param,pathParams))
+    .then((data) => {
+      dispatch(paramSetting.getWarnParameter());
+    })
+    .catch((err) => {
       console.log(err);
     });
   }

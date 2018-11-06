@@ -130,7 +130,7 @@ class Header extends baseCom {
       <header className="header">
         <div className="system-header">
           <a className="system-logo" href="/monitoringSystem/pages/index">
-            <span className="logo" data-i18n="console.header.logo"><span className="circle-logo" ></span>东方红3深远海综合科学考察实习船电磁兼容监测系统</span>
+            <span className="logo" data-i18n="console.header.logo">东方红3深远海综合科学考察实习船电磁兼容监测系统</span>
           </a>
           <Menu mode="horizontal">
             <SubMenu key="sub1" title={<span className="alarminfo"> <Badge count={eventDom.length}><i className="iconfont">&#xe646;</i></Badge></span>   }>
