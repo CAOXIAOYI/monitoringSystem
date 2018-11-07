@@ -70,8 +70,8 @@ class Index extends BaseCom {
         return (
           <div className="event-body" key={idx}>
             <div className="div-even">{item.time_stamp}</div>
-            <div className="div-even">{item.event}</div>
             <div className="div-even">{item.device_room}</div>
+            <div className="div-even">{item.event}</div>
           </div>
         )
         

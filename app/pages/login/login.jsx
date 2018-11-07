@@ -66,6 +66,7 @@ class NormalLoginForm extends React.Component{
     
     return (
       <div className="page-login">
+        <div className='page-title'>东方红3深海综合科学考察实习船电磁兼容监测系统</div>
         <div className="login-container">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
             <FormItem>
