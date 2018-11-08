@@ -12,8 +12,8 @@ const Line = React.createClass({
     this.option =  {
         title: {
           text: '',
-          left:'0',
-          top:'-20px',
+          left:'45%',
+          top:'10px',
           textStyle: {
             fontSize: 14,
             color: '#fff'
@@ -30,16 +30,19 @@ const Line = React.createClass({
           }
         },
         calculable: true,
-        grid: {
-          x: '50px',
-          y: '20px',
-          x2: '20px',
-          y2: '20px',
-        },
+        // grid: {
+        //   x: '50px',
+        //   right:'20px',
+        //   y: '20px',
+        //   x2: '20px',
+        //   y2: '20px',
+        //   containLabel:true
+        // },
         color:['#4A8DBB', '#D34445', '#90B758', '#D07541', '#E2CF21','#218CE2'],
         xAxis: [{
           type: 'category',
-          boundaryGap: false,
+          name:'',
+          boundaryGap:false,
           data: [],
           axisLabel: {
             textStyle:{
@@ -116,7 +119,9 @@ const Line = React.createClass({
   },
   updateDOM(_echartData){
     let _newState = _.cloneDeep(this.option);
+
     _.set(_newState, "title.text", _echartData.title);
+    _.set(_newState, "xAxis[0].name", _echartData.xAxisName);
     _.set(_newState, "legend.data", _echartData.legend);
     _.set(_newState, "xAxis[0].data", _echartData.item);
     let _data = _echartData.legend.map(function(itemTemp, index) {

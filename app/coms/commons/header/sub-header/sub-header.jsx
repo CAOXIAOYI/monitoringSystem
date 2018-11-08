@@ -99,7 +99,7 @@ class SubHeader extends baseCom {
        if(isisPrivilege && i === 5){
           subDom.push( 
             <Menu.Item key="jamming_intensity">
-              <NavLink to="/monitoringSystem/pages/jamming_intensity"><span>电磁场强度监测</span></NavLink>
+              <NavLink to="/monitoringSystem/pages/jamming_intensity"><span>实验室电磁场强度分布</span></NavLink>
             </Menu.Item>
           );
        }

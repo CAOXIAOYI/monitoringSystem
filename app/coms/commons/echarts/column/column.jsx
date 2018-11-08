@@ -42,12 +42,12 @@ const Column = React.createClass({
       //color:['#E221C3', '#41A9D0', '#79CC15', '#D07541', '#E2CF21','#218CE2'],
       //color:['#E407C5', '#FAAC23', '#76CE00', '#D07541', '#E2CF21','#218CE2'],
       color:['#4A8DBB', '#D34445', '#90B758', '#D07541', '#E2CF21','#218CE2'],
-      grid: {
-        x: '10px',
-        y: '20%',
-        x2: '20px',
-        y2: '25px',
-      },
+      // grid: {
+      //   x: '10px',
+      //   y: '20%',
+      //   x2: '20px',
+      //   y2: '25px',
+      // },
       xAxis: [{
         type: 'category',
         axisLabel: {

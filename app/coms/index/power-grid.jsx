@@ -12,7 +12,7 @@ var PowerGrid = React.createClass({
     this.svg = "";
     this.zoomgroup = "";
     this.trans = [0, 0];
-    this.scale = .8;
+    this.scale = .9;
     return {
     };
   },

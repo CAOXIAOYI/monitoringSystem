@@ -149,7 +149,7 @@ class Index extends BaseCom {
           </div>
           <div className='bottom-box'>
               <div className='date-putin btn'>数据导入</div>
-              <div className='set-alert btn' onClick={this.showAlertModal.bind(this)}>告警值设置</div>
+              <div className='set-alert btn' onClick={this.showAlertModal.bind(this)} style={{display:'none'}}>告警值设置</div>
             </div>
         </div>
         

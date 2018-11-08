@@ -19,12 +19,14 @@ let ElectricEquipment = React.createClass({
     
     let actEchartData = {
       title:'有功功率特性曲线',
+      xAxisName:'功率',
       legend:[''],
       item:[],
       data:[[]]
     }
     let reactEchartData = {
       title:'无功功率特性曲线',
+      xAxisName:'电压',
       legend:[''],
       item:[],
       data:[[]]
