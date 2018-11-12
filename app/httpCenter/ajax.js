@@ -5,7 +5,7 @@ import {
   message,
   Button
 } from 'antd';
-var UrlPoxy = 'http://dfh.jokco.com'
+var UrlPoxy = '';
 
 exports.request = function request(method, url, data, callback) {
   if (!callback && typeof data === 'function') {
