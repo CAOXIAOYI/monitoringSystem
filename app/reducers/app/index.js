@@ -8,7 +8,7 @@ var initState = {
   result:[],
   homeDatas:{},
   latestEvents:[],
-  alertData:[]
+  alertData:{}
 };
 
 module.exports = function(state = initState, action) {
@@ -25,7 +25,10 @@ module.exports = function(state = initState, action) {
       return newState;
 
     case actions.async.alertData.success:
-      newState.alertData = action.data;
+      if(action.pathParams.grid){
+        newState.alertData[action.pathParams.grid] = action.data;
+      }
+      
       return newState;
       
     default:

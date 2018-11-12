@@ -302,7 +302,7 @@ module.exports = {
   },
   alertData: {
     method: "GET",
-    url: URLResolve("/dfh/history/latestWaringEvent",true)
+    url: URLResolve("/dfh/history/latestWaringEvent/#grid",true)
   },
    /**首页 end**/
   /**子系统监控 start**/

@@ -28,7 +28,10 @@ exports.homePageData = function(param, pathParams) {
 //展示数据
 exports.alertData = function(param, pathParams) {
   return (dispatch) => {
-     dispatch(appIndex.alertData("",'')).catch((err) => {
+    dispatch(appIndex.alertData("",{grid:1})).catch((err) => {
+      console.log(err);
+    });
+    dispatch(appIndex.alertData("",{grid:2})).catch((err) => {
       console.log(err);
     });
   }

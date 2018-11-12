@@ -59,6 +59,8 @@ class Index extends BaseCom {
   }
 
   renderAlert(list){
+
+    if(!list){return null}
     if(list.length == 0){
       return (
         <div className='none-data'>
@@ -72,6 +74,8 @@ class Index extends BaseCom {
             <div className="div-even">{item.time_stamp}</div>
             <div className="div-even">{item.device_room}</div>
             <div className="div-even">{item.event}</div>
+            <div className="div-even">{item.event_status ? '已处理' : '未处理'}</div>
+            <div className="div-even">{item.event_grade == 1 ? '橙色' :'红色'}</div>
           </div>
         )
         
@@ -84,7 +88,9 @@ class Index extends BaseCom {
 
   render() {
     let props = this.props;
+    const powerGrid = this.state.powerGrid;
     let appMeta = props.appMeta;
+    const list = powerGrid ? appMeta.alertData['1']:appMeta.alertData['2'];
 
     let selectedClass = classnames({
       "selected": true,
@@ -111,7 +117,7 @@ class Index extends BaseCom {
             <div>事件状态</div>
           </div>
           <div className='scroll-body'>
-            {this.renderAlert(appMeta.alertData)}
+            {this.renderAlert(list)}
           </div>
         </div>
         
