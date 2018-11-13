@@ -74,8 +74,8 @@ class Index extends BaseCom {
             <div className="div-even">{item.time_stamp}</div>
             <div className="div-even">{item.device_room}</div>
             <div className="div-even">{item.event}</div>
-            <div className="div-even">{item.event_status ? '已处理' : '未处理'}</div>
             <div className="div-even">{item.event_grade == 1 ? '橙色' :'红色'}</div>
+            <div className="div-even">{item.event_status ? '已处理' : '未处理'}</div>
           </div>
         )
         
